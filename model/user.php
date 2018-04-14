@@ -126,6 +126,11 @@ class user
       return $this->get_data($query, '');
    }
 
+   function getById($id){
+     $query = "SELECT * FROM user WHERE id=".$id;
+     return $this->get_data($query, '');
+   }
+
  }
 
 
