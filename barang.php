@@ -6,10 +6,14 @@
 
   $barang = new barang();
 
-  if(!isset($_GET['nama'])){
-    $data = $barang->showAll();
-  }else{
+  if (isset($_GET['nama'])&&isset($_GET['user'])) {
+    $data = $barang->getByUser($_GET['user'],$_GET['nama']);
+  }else if(isset($_GET['nama'])){
     $data = $barang->getByNama($_GET['nama']);
+  }else if(isset($_GET['user'])){
+    $data = $barang->getByUser($_GET['user'],"");
+  }else{
+    $data = $barang->showAll();
   }
  ?>
 <!DOCTYPE html>

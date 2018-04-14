@@ -106,6 +106,14 @@ class barang{
     return $this->get_data($query, '');
   }
 
+  function getByUser($id_user,$nama){
+    $query = "SELECT * FROM barang WHERE id_user =".$id_user;
+    if($nama!=""){
+      $query = $query." AND nama LIKE '%$nama%'";
+    }
+    return $this->get_data($query, '');
+  }
+
   function showAll(){
     $query = "SELECT * FROM barang";
     if(isset($_SESSION['id'])){
