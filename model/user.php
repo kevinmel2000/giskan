@@ -118,6 +118,11 @@ class user
     }
   }
 
+  function getAll(){
+      $query = "SELECT * FROM user";
+      return $this->get_data($query, '');
+   }
+
  }
 
 
