@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2018 at 06:54 AM
+-- Generation Time: Apr 14, 2018 at 10:16 AM
 -- Server version: 5.7.21-log
 -- PHP Version: 7.1.7
 
@@ -60,6 +60,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `role` int(11) NOT NULL DEFAULT '2',
   `nama` varchar(255) NOT NULL,
   `logo` varchar(255) DEFAULT NULL,
@@ -68,6 +69,15 @@ CREATE TABLE `user` (
   `latitude` varchar(255) DEFAULT NULL,
   `longitude` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `role`, `nama`, `logo`, `alamat`, `no_telefon`, `latitude`, `longitude`) VALUES
+(1, 'inop123', '63a9f0ea7bb98050796b649e85481845', '8', 2, '8', '8', '8', 8, '8', '8'),
+(4, 'rasakmarsawa', '8e933201a769ead05cad04b3fad8adbb', 'rasakmarsawa@gmail.com', 2, 'yoga', NULL, NULL, NULL, NULL, NULL),
+(6, 'kue', '640a3ae9a93298b2784ec762368c8a39', 'kue', 2, 'kue', NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -110,7 +120,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

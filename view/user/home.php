@@ -35,6 +35,9 @@
         <input type="submit" name="logout" value="Logout">
       </form>
     </div>
+    <div>
+      <a href="barang.php">Barang</a>
+    </div>
 
   </body>
 </html>
