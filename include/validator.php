@@ -18,7 +18,10 @@
 
 	if(isset($_POST['logout'])){
 				session_destroy();
-				$script->redirect('../../login');
+				$page = explode("/",$_SERVER['REQUEST_URI']);
+				$take = $page[count($page)-1];
+				$take = explode(".",$take);
+				$script->redirect($take[0]);
 	}
 
 	if(isset($_POST['update_profile'])){
