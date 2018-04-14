@@ -57,5 +57,30 @@ class barang{
       }
   }
 
+  function update($data){
+    global $pdo;
+    try{
+      $query = $pdo->prepare("
+        UPDATE `barang` SET
+          `nama`=?,
+          `harga`=?,
+          `foto`=?,
+          `keterangan`=?
+        WHERE `id`= ?"
+      );
+      $query->execute(array(
+          $data['nama'],
+          $data['harga'],
+          $data['foto'],
+          $data['keterangan'],
+          $_GET['id']
+        ));
+      $script = new function_script();
+      $script->redirect('home');
+    }catch(PDOException $e){
+      echo "Update Gagal";
+    }
+  }
+
 }
  ?>

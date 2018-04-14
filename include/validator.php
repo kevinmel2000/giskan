@@ -26,5 +26,15 @@
 				$user->update($_POST);
 	}
 
+	if(isset($_POST['post'])){
+			$barang = new barang();
+			$barang->add($_POST);
+	}
+
+	if(isset($_POST['update_post'])){
+			$barang = new barang();
+			$barang->update($_POST);
+	}
+
 
  ?>
