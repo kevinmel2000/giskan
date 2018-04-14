@@ -1,10 +1,13 @@
 <?php
   session_start();
-  include '../../include/validator.php';
   include '../../model/user.php';
+  include '../../model/barang.php';
+  include '../../include/validator.php';
   $user = new user();
   $user->check();
 
+  $barang = new barang();
+  $data = $barang->showByIdUser($_SESSION['id'])['data'];
 
 ?>
 <!DOCTYPE html>
@@ -216,23 +219,28 @@
                                     <a href="barang.php">Barang</a>
                                   </div>
                               </div>
-
                             </div>
-
-
-
-
-
-
                         </div>
                         <div class="col-md-9">
-                          <!-- Div Peta -->
-                           <div id="mapid">
-
-
-
-                           </div>
-
+                          <table>
+                            <tr>
+                              <th>nama</th>
+                              <th>harga</th>
+                              <th>keterangan</th>
+                              <th>Aksi</th>
+                            </tr>
+                            <?php
+                              foreach ($data as $dat) {
+                                echo "
+                                <tr>
+                                <td>".$dat['nama']."</td>
+                                <td>".$dat['harga']."</td>
+                                <td>".$dat['keterangan']."</td>
+                                <td><a href='view.php?id=".$dat['id']."'>Lihat</a></td>
+                                </tr>";
+                              }
+                            ?>
+                          </table>
                         </div>
                     </div>
                     <div class="row">
