@@ -38,7 +38,7 @@ function updateURLParameter(url, param, paramVal) {
 				newAdditionalURL += temp + tempArray[i];
 				temp = "&";
 			}
-		}
+		}        
 	} else {
 		var tmpAnchor = baseURL.split("#");
 		var theParams = tmpAnchor[0];
@@ -273,14 +273,14 @@ function initMap() {
 
 	map.addControl(L.languageSelector({
 		languages: new Array(
-			L.langObject('en', 'English', '../mapicons/en.png')
-		,	L.langObject('de', 'Deutsch', '../mapicons/de.png')
-		,	L.langObject('fr', 'Français', '../mapicons/fr.png')
-		,	L.langObject('es', 'Español', '../mapicons/es.png')
-		,	L.langObject('ca', 'Català', '../mapicons/catalonia.png')
-		,	L.langObject('ru', 'Русский', '../mapicons/ru.png')
-		,	L.langObject('nl', 'Nederlands', '../mapicons/nl.png')
-		,	L.langObject('pt_br', 'Português do Brasil', '../mapicons/br.png')
+			L.langObject('en', 'English', 'mapicons/en.png')
+		,	L.langObject('de', 'Deutsch', 'mapicons/de.png')
+		,	L.langObject('fr', 'Français', 'mapicons/fr.png')
+		,	L.langObject('es', 'Español', 'mapicons/es.png')
+		,	L.langObject('ca', 'Català', 'mapicons/catalonia.png')
+		,	L.langObject('ru', 'Русский', 'mapicons/ru.png')
+		,	L.langObject('nl', 'Nederlands', 'mapicons/nl.png')
+		,	L.langObject('pt_br', 'Português do Brasil', 'mapicons/br.png')
 		),
 		callback: changeLanguage,
 		initialLanguage: localLang,

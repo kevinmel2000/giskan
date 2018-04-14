@@ -232,7 +232,7 @@ function initMap() {
 	// You don't need an API key for this to work at the moment, but this will change eventually.
 	var OWM_API_KEY = '96cba99e9e163dce45a3fa87d423491e';
 
-	var clouds = L.OWM.clouds({opacity: 0.8, legendImagePath: 'plugin_weather/files/NT2.png', appId: OWM_API_KEY});
+	var clouds = L.OWM.clouds({opacity: 0.8, legendImagePath: '../plugin_weather/files/NT2.png', appId: OWM_API_KEY});
 	var cloudscls = L.OWM.cloudsClassic({opacity: 0.5, appId: OWM_API_KEY});
 	var precipitation = L.OWM.precipitation( {opacity: 0.5, appId: OWM_API_KEY} );
 	var precipitationcls = L.OWM.precipitationClassic({opacity: 0.5, appId: OWM_API_KEY});
@@ -246,9 +246,9 @@ function initMap() {
 
 	var localLang = getLocalLanguage();
 
-	var city = L.OWM.current({intervall: 15, imageLoadingUrl: 'plugin_weather/leaflet/owmloading.gif', lang: localLang, minZoom: 5,
+	var city = L.OWM.current({intervall: 15, imageLoadingUrl: '../plugin_weather/leaflet/owmloading.gif', lang: localLang, minZoom: 5,
 			appId: OWM_API_KEY});
-	var windrose = L.OWM.current({intervall: 15, imageLoadingUrl: 'plugin_weather/leaflet/owmloading.gif', lang: localLang, minZoom: 4,
+	var windrose = L.OWM.current({intervall: 15, imageLoadingUrl: '../plugin_weather/leaflet/owmloading.gif', lang: localLang, minZoom: 4,
 			appId: OWM_API_KEY, markerFunction: myWindroseMarker, popup: false, clusterSize: 50,
    			imageLoadingBgUrl: 'https://openweathermap.org/img/w0/iwind.png' });
 	windrose.on('owmlayeradd', windroseAdded, windrose); // Add an event listener to get informed when windrose layer is ready
@@ -273,14 +273,14 @@ function initMap() {
 
 	map.addControl(L.languageSelector({
 		languages: new Array(
-			L.langObject('en', 'English', 'plugin_weather/mapicons/en.png')
-		,	L.langObject('de', 'Deutsch', 'plugin_weather/mapicons/de.png')
-		,	L.langObject('fr', 'Français', 'plugin_weather/mapicons/fr.png')
-		,	L.langObject('es', 'Español', 'plugin_weather/mapicons/es.png')
-		,	L.langObject('ca', 'Català', 'plugin_weather/mapicons/catalonia.png')
-		,	L.langObject('ru', 'Русский', 'plugin_weather/mapicons/ru.png')
-		,	L.langObject('nl', 'Nederlands', 'plugin_weather/mapicons/nl.png')
-		,	L.langObject('pt_br', 'Português do Brasil', 'plugin_weather/mapicons/br.png')
+			L.langObject('en', 'English', '../plugin_weather/mapicons/en.png')
+		,	L.langObject('de', 'Deutsch', '../plugin_weather/mapicons/de.png')
+		,	L.langObject('fr', 'Français', '../plugin_weather/mapicons/fr.png')
+		,	L.langObject('es', 'Español', '../plugin_weather/mapicons/es.png')
+		,	L.langObject('ca', 'Català', '../plugin_weather/mapicons/catalonia.png')
+		,	L.langObject('ru', 'Русский', '../plugin_weather/mapicons/ru.png')
+		,	L.langObject('nl', 'Nederlands', '../plugin_weather/mapicons/nl.png')
+		,	L.langObject('pt_br', 'Português do Brasil', '../plugin_weather/mapicons/br.png')
 		),
 		callback: changeLanguage,
 		initialLanguage: localLang,

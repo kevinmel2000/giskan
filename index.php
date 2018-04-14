@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>GIS Pemantau Sampah</title>
+    <title>GisKan GIS Untuk Nelayan</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -16,6 +17,8 @@
     <link href="assets/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="assets/css/demo.css" rel="stylesheet" />
+
+
 
     <!-- Leaflet JS Sisip Script -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
@@ -46,20 +49,20 @@
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="http://www.creative-tim.com" class="simple-text">
-                        Creative Tim
+                        Kuaci Clan
                     </a>
                 </div>
                 <ul class="nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php">
                             <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Laporkan Sampah</p>
+                            <p>Pantau Cuaca</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="./lokasi.php">
                             <i class="nc-icon nc-circle-09"></i>
-                            <p>Data Lokasi Sampah</p>
+                            <p>Data Toko</p>
                         </a>
                     </li>
                     <li>
@@ -212,7 +215,15 @@
                         </div>
                         <div class="col-md-9">
                           <!-- Div Peta -->
-                           <div id="mapid"></div>
+                           <div id="map">
+
+                             <?php
+
+                             include 'plugin_weather/example/index.php';
+
+                              ?>
+
+                           </div>
                         </div>
                     </div>
                     <div class="row">
@@ -366,13 +377,17 @@
 
 
 
-var mymap = L.map('mapid').setView([-0.9154789999999999, 100.46043549999999], 13);
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1IjoiYXh2ZXI3IiwiYSI6ImNqZjZ0NXk2NjA4NzI0MG44djVyOXU2cXAifQ.N-pJV3Uw0nOhjvLz9E4Zuw'
-}).addTo(mymap);
+// var mymap = L.map('mapid').setView([-0.9154789999999999, 100.46043549999999], 13);
+// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+//     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+//     maxZoom: 18,
+//     id: 'mapbox.streets',
+//     accessToken: 'pk.eyJ1IjoiYXh2ZXI3IiwiYSI6ImNqZjZ0NXk2NjA4NzI0MG44djVyOXU2cXAifQ.N-pJV3Uw0nOhjvLz9E4Zuw'
+// }).addTo(mymap);
+
+
+
+
 
 
 
