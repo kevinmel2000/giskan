@@ -1,6 +1,6 @@
 <?php
 
-include 'connect.php';
+include '../include/connections.php';
 $query = "SELECT * FROM upload_masy";
 $query2=mysqli_query($konek, $query);
 

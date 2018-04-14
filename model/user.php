@@ -60,11 +60,10 @@ class user
 
         if($rows > 0){
           $status = true;
+          $result=$req->fetchAll();
         }
 
-        $data = $req->fetch(PDO::FETCH_NAMED);
-
-        return array('status' => $status, 'rows' => $rows, 'data' => $data);
+        return array('status' => $status, 'rows' => $rows, 'data' => $result);
       }catch(PDOException $e){
         echo "Error! gagal mengambil data: ".$e->getMessage();
       }
