@@ -202,13 +202,14 @@ $all=$user->getAll()['data'];
 
                                   <button style="margin-top:30px;" class="btn btn-sucess" onclick="lokasiToko()"> Lokasi Toko </button>
                                   <select id ="lokasiData"style="margin-top:30px;" class="form-control" name="" onchange="fungsitest()">
+                                    <option>Pilih Toko </option>
 
                                     <?php
                                      $i=0;
-                                     $panjang= count($data);
+                                     $panjang= count($all);
                                      while ($i<$panjang)
                                      {
-                                        echo "<option label='".$data[$i]['name']."' value='".$data[$i]['latitude'].",".$data[$i]['longitude']."'>"."</option>";
+                                        echo "<option label='".$all[$i]['nama']."' value='".$all[$i]['latitude'].",".$all[$i]['longitude']."'>"."</option>";
                                         $i++;
                                      }
 
@@ -485,7 +486,7 @@ console.log(argeojson);
 var routing;
 function fungsitest()
 {
-
+  
   console.log("Hahaha Kampang");
   var daerah= document.getElementById("lokasiData").value;
   console.log(daerah);
@@ -512,25 +513,7 @@ function removeRute()
 
 }
 
-function fungsitest()
-{
 
-  console.log("Hahaha Kampang");
-  var daerah= document.getElementById("lokasiData").value;
-  console.log(daerah);
-  //Pisahkan lagi variabel tersebut
-  var coords = daerah.split(",");
-  console.log(coords);
-
-
-  L.Routing.control({
-  waypoints: [
-    L.latLng(latAwal, lonAwal),
-    L.latLng(coords[0],coords[1])
-  ]
-  }).addTo(mymap);
-
-}
 
 
 </script>
