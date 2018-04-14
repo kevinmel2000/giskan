@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2018 at 05:35 AM
+-- Generation Time: Apr 14, 2018 at 06:54 AM
 -- Server version: 5.7.21-log
 -- PHP Version: 7.1.7
 
@@ -46,7 +46,8 @@ CREATE TABLE `barang` (
 CREATE TABLE `transaksi` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_barang` int(11) NOT NULL
+  `id_barang` int(11) NOT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'waiting'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -59,9 +60,11 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` int(11) NOT NULL DEFAULT '3',
+  `role` int(11) NOT NULL DEFAULT '2',
   `nama` varchar(255) NOT NULL,
   `logo` varchar(255) DEFAULT NULL,
+  `alamat` varchar(255) DEFAULT NULL,
+  `no_telefon` int(20) DEFAULT NULL,
   `latitude` varchar(255) DEFAULT NULL,
   `longitude` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -86,7 +89,8 @@ ALTER TABLE `transaksi`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
