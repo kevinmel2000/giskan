@@ -71,17 +71,71 @@ class user
   }
 
   function setSession($data){
-    $_SESSION['id']=$data['id'];
-    $_SESSION['username']=$data['username'];
-    $_SESSION['password']=$data['password'];
-    $_SESSION['email']=$data['email'];
-    $_SESSION['role']=$data['role'];
-    $_SESSION['nama']=$data['nama'];
-    $_SESSION['logo']=$data['logo'];
-    $_SESSION['alamat']=$data['alamat'];
-    $_SESSION['no_telefon']=$data['no_telefon'];
-    $_SESSION['latitude']=$data['latitude'];
-    $_SESSION['longitude']=$data['longitude'];
+    if(isset($data['id'])){
+        $_SESSION['id']=$data['id'];
+    }
+    if(isset($data['username'])){
+        $_SESSION['username']=$data['username'];
+    }
+    if(isset($data['password'])){
+        $_SESSION['password']=$data['password'];
+    }
+    if(isset($data['email'])){
+        $_SESSION['email']=$data['email'];
+    }
+    if(isset($data['role'])){
+        $_SESSION['role']=$data['role'];
+    }
+    if(isset($data['nama'])){
+        $_SESSION['nama']=$data['nama'];
+    }
+    if(isset($data['logo'])){
+        $_SESSION['logo']=$data['logo'];
+    }
+    if(isset($data['alamat'])){
+        $_SESSION['alamat']=$data['alamat'];
+    }
+    if(isset($data['no_telefon'])){
+        $_SESSION['no_telefon']=$data['no_telefon'];
+    }
+    if(isset($data['latitude'])){
+        $_SESSION['latitude']=$data['latitude'];
+    }
+    if(isset($data['longitude'])){
+        $_SESSION['longitude']=$data['longitude'];
+    }    
+  }
+
+  function update($data){
+    global $pdo;
+    try{
+      $query = $pdo->prepare("
+        UPDATE `user` SET
+          `nama`=?,
+          `email`=?,
+          `logo`=?,
+          `alamat`=?,
+          `no_telefon`=?,
+          `latitude`=?,
+          `longitude`=?
+        WHERE `id`= ?"
+      );
+      $query->execute(array(
+          $data['nama'],
+          $data['email'],
+          $data['logo'],
+          $data['alamat'],
+          $data['no_telefon'],
+          $data['latitude'],
+          $data['longitude'],
+          $_SESSION['id']
+        ));
+        $this->setSession($data);
+      $script = new function_script();
+      $script->redirect('home');
+    }catch(PDOException $e){
+      echo "Update Gagal";
+    }
   }
 
  }

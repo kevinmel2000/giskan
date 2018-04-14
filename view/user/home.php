@@ -1,4 +1,5 @@
-<?php session_start();
+<?php
+  session_start();
   include '../../include/validator.php';
   include '../../model/user.php';
 ?>
@@ -11,6 +12,9 @@
   </head>
   <body>
     <div>
+      <?php echo $_SESSION['id']; ?>
+    </div>
+    <div>
       <?php echo $_SESSION['nama']; ?>
     </div>
     <div>
@@ -20,7 +24,7 @@
       <?php echo $_SESSION['longitude']; ?>
     </div>
     <div>
-      <a href="edit.php?id=<?php echo $_SESSION['id'] ?>">Edit</a>
+      <a href="edit.php">Edit</a>
     </div>
     <div>
       <form class="" method="post">

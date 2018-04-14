@@ -1,50 +1,47 @@
-
+<?php
+  session_start();
+  include '../../model/user.php';
+  include '../../include/validator.php';
+?>
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-</head>
-
-<body>
-  <div class="col-md-3">
-                              <div class="card ">
-                                  <div class="card-header ">
-                                      <h4 class="card-title">Map Menu</h4>
-                                      <p style="color:red;" onclick="remove()" class="card-category"><b>UNDO</b></p>
-                                  </div>
-
-
-
-                                  <div class="card-body ">
-                                    <!-- Menu Peta -->
-                                    <button class="btn btn-info" onclick="gpsLokasi()"> GPS </button>
-                                    <button class="btn btn-info" onclick="manualLokasi()"> Manual </button>
-
-                                       <form enctype="multipart/form-data" class="" action="upload/upload.php" method="POST">
-                                       <label for="lat">latitude :</label> <br>
-                                       <input type="text" id="lat" name="lat" readonly="">
-                                       <label for="lon">Longitude :</label>
-                                       <input type="text" id="lon" name="lon" readonly="">
-
-                                       <input type="file" style="margin-top:10px;" name="fileupload" id="fileupload">
-                                       <input type="submit" style="margin-top:40px;" class="btn btn-sucess" value="inputkan" name="button">
-                                       </form>
-
-
-                                  </div>
-                                  <div class="card-footer ">
-                                      <div class="legend">
-
-                                      </div>
-                                      <hr>
-                                      <div class="stats">
-
-                                      </div>
-                                  </div>
-
-                              </div>
-                          </div></body>
-
-
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form method="post">
+      <div class="">
+        <label for="nama">Nama</label>
+        <input type="text" name="nama" value="<?php echo $_SESSION['nama'] ?>">
+      </div>
+      <div class="">
+        <label for="email">Email</label>
+        <input type="text" name="email" value="<?php echo $_SESSION['email'] ?>">
+      </div>
+      <div class="">
+        <label for="nama">Logo</label>
+        <input type="text" name="logo" value="<?php echo $_SESSION['logo'] ?>">
+      </div>
+      <div class="">
+        <label for="alamat">Alamat</label>
+        <input type="text" name="alamat" value="<?php echo $_SESSION['alamat'] ?>">
+      </div>
+      <div class="">
+        <label for="no_telfon">No. Telp</label>
+        <input type="text" name="no_telefon" value="<?php echo $_SESSION['no_telefon'] ?>">
+      </div>
+      <div class="">
+        <label for="latitude">Latitude</label>
+        <input type="text" name="latitude" value="<?php echo $_SESSION['latitude'] ?>">
+      </div>
+      <div class="">
+        <label for="nama">Longitude</label>
+        <input type="text" name="longitude" value="<?php echo $_SESSION['longitude'] ?>">
+      </div>
+      <div class="">
+        <input type="submit" name="update_profile" value="Update">
+      </div>
+    </form>
+  </body>
 </html>

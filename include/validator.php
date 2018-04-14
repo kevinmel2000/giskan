@@ -18,4 +18,9 @@
 				session_destroy();
 				$a->redirect('../../login');
 	}
+
+	if(isset($_POST['update_profile'])){
+				$user = new user();
+				$user->update($_POST);
+	}
  ?>
