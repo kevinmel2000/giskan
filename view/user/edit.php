@@ -348,7 +348,7 @@ function manualLokasi()
 { var latitude;
   var longitude;
   var tanda;
-  swal("Pilih Posisi Sampah tersebut");
+  swal("Pilih Posisi Toko Anda");
   mymap.on('click', function(e) {
           newMarker = new L.marker(e.latlng).addTo(mymap);
           latitude=e.latlng.lat;
