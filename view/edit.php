@@ -1,25 +1,30 @@
 <?php
-include 'proses/getdata.php';
-
- ?>
+  session_start();
+  include '../../model/user.php';
+  include '../../include/validator.php';
+  $user = new user();
+  $user->check();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../../assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>GIS Pemantau Sampah</title>
+    <title>GisKan GIS Untuk Nelayan</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../assets/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
+    <link href="../../assets/css/demo.css" rel="stylesheet" />
+
+
 
     <!-- Leaflet JS Sisip Script -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
@@ -31,13 +36,6 @@ include 'proses/getdata.php';
   crossorigin=""></script>
   <!-- Sweetalert -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<!-- Leaflet Routing -->
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
-<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
-<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-
   <style>
     #mapid { height: 500px; }
   </style>
@@ -57,17 +55,17 @@ include 'proses/getdata.php';
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="http://www.creative-tim.com" class="simple-text">
-                        Creative Tim
+                        Kuaci Clan
                     </a>
                 </div>
                 <ul class="nav">
-                    <li >
+                    <li class="nav-item active">
                         <a class="nav-link" href="index.php">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Inputkan Toko</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li>
                         <a class="nav-link" href="./lokasi.php">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>Data Toko</p>
@@ -103,12 +101,7 @@ include 'proses/getdata.php';
                             <p>Notifications</p>
                         </a>
                     </li>
-                    <li class="nav-item active active-pro">
-                        <a class="nav-link active" href="upgrade.html">
-                            <i class="nc-icon nc-alien-33"></i>
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -116,12 +109,8 @@ include 'proses/getdata.php';
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class=" container-fluid  ">
-                    <a class="navbar-brand" href="#pablo"> Dashboard </a>
-                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                    </button>
+                    <a class="navbar-brand" href="#pablo"> GisKan </a>
+
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
                         <ul class="nav navbar-nav mr-auto">
                             <li class="nav-item">
@@ -130,26 +119,8 @@ include 'proses/getdata.php';
                                     <span class="d-lg-none">Dashboard</span>
                                 </a>
                             </li>
-                            <li class="dropdown nav-item">
-                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <i class="nc-icon nc-planet"></i>
-                                    <span class="notification">5</span>
-                                    <span class="d-lg-none">Notification</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Notification 1</a>
-                                    <a class="dropdown-item" href="#">Notification 2</a>
-                                    <a class="dropdown-item" href="#">Notification 3</a>
-                                    <a class="dropdown-item" href="#">Notification 4</a>
-                                    <a class="dropdown-item" href="#">Another notification</a>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nc-icon nc-zoom-split"></i>
-                                    <span class="d-lg-block">&nbsp;Search</span>
-                                </a>
-                            </li>
+
+
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
@@ -171,8 +142,11 @@ include 'proses/getdata.php';
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
-                                    <span class="no-icon">Log out</span>
+                                <a class="nav-link" href="#">
+                                    <form class="" action="" method="post">
+                                      <input class="no-icon" type="submit" name="logout" value="Logout">
+                                    </form>
+
                                 </a>
                             </li>
                         </ul>
@@ -197,31 +171,40 @@ include 'proses/getdata.php';
                                   <button class="btn btn-info" onclick="gpsLokasi()"> GPS </button>
                                   <button class="btn btn-info" onclick="manualLokasi()"> Manual </button>
 
-                                  <button style="margin-top:30px;" class="btn btn-sucess" onclick="lokasiSampah()"> Lokasi Toko </button>
-                                  <select id ="lokasiData"style="margin-top:30px;" class="form-control" name="" onchange="fungsitest()">
 
-                                    <?php
-                                     $i=0;
-                                     $panjang= count($data);
-                                     while ($i<$panjang)
-                                     {
-                                        echo "<option label='".$data[$i]['name']."' value='".$data[$i]['latitude'].",".$data[$i]['longitude']."'>"."</option>";
-                                        $i++;
-                                     }
+                                     <form method="post">
+                                       <div class="">
+                                         <label for="nama">Nama</label>
+                                         <input type="text" name="nama" value="<?php echo $_SESSION['nama'] ?>">
+                                       </div>
+                                       <div class="">
+                                         <label for="email">Email</label>
+                                         <input type="text" name="email" value="<?php echo $_SESSION['email'] ?>">
+                                       </div>
+                                       <div class="">
+                                         <label for="nama">Logo</label>
+                                         <input type="text" name="logo" value="<?php echo $_SESSION['logo'] ?>">
+                                       </div>
+                                       <div class="">
+                                         <label for="alamat">Alamat</label>
+                                         <input type="text" name="alamat" value="<?php echo $_SESSION['alamat'] ?>">
+                                       </div>
+                                       <div class="">
+                                         <label for="no_telfon">No. Telp</label>
+                                         <input type="text" name="no_telefon" value="<?php echo $_SESSION['no_telefon'] ?>">
+                                       </div>
+                                       <div class="">
 
+                                         <input id="lat" type="hidden" name="latitude" value="<?php echo $_SESSION['latitude'] ?>">
+                                       </div>
+                                       <div class="">
 
-
-
-                                     ?>
-
-                                  </select>
-
-                                  <button style=" margin-top:30px;" class="btn btn-sucess" onclick="removeRute()"> Remove Rute </button>
-
-
-
-
-
+                                         <input id="lon" type="hidden" name="longitude" value="<?php echo $_SESSION['longitude'] ?>">
+                                       </div>
+                                       <div class="">
+                                         <input type="submit" name="update_profile" value="Update">
+                                       </div>
+                                     </form>
 
 
                                 </div>
@@ -239,7 +222,9 @@ include 'proses/getdata.php';
                         </div>
                         <div class="col-md-9">
                           <!-- Div Peta -->
-                           <div id="mapid"></div>
+                           <div id="mapid">
+
+                           </div>
                         </div>
                     </div>
                     <div class="row">
@@ -289,102 +274,24 @@ include 'proses/getdata.php';
             </footer>
         </div>
     </div>
-    <!--   -->
-    <!-- <div class="fixed-plugin">
-    <div class="dropdown show-dropdown">
-        <a href="#" data-toggle="dropdown">
-            <i class="fa fa-cog fa-2x"> </i>
-        </a>
 
-        <ul class="dropdown-menu">
-			<li class="header-title"> Sidebar Style</li>
-            <li class="adjustments-line">
-                <a href="javascript:void(0)" class="switch-trigger">
-                    <p>Background Image</p>
-                    <label class="switch">
-                        <input type="checkbox" data-toggle="switch" checked="" data-on-color="primary" data-off-color="primary"><span class="toggle"></span>
-                    </label>
-                    <div class="clearfix"></div>
-                </a>
-            </li>
-            <li class="adjustments-line">
-                <a href="javascript:void(0)" class="switch-trigger background-color">
-                    <p>Filters</p>
-                    <div class="pull-right">
-                        <span class="badge filter badge-black" data-color="black"></span>
-                        <span class="badge filter badge-azure" data-color="azure"></span>
-                        <span class="badge filter badge-green" data-color="green"></span>
-                        <span class="badge filter badge-orange" data-color="orange"></span>
-                        <span class="badge filter badge-red" data-color="red"></span>
-                        <span class="badge filter badge-purple active" data-color="purple"></span>
-                    </div>
-                    <div class="clearfix"></div>
-                </a>
-            </li>
-            <li class="header-title">Sidebar Images</li>
-
-            <li class="active">
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                    <img src="assets/img/sidebar-1.jpg" alt="" />
-                </a>
-            </li>
-            <li>
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                    <img src="../assets/img/sidebar-3.jpg" alt="" />
-                </a>
-            </li>
-            <li>
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                    <img src="..//assets/img/sidebar-4.jpg" alt="" />
-                </a>
-            </li>
-            <li>
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                    <img src="../assets/img/sidebar-5.jpg" alt="" />
-                </a>
-            </li>
-
-            <li class="button-container">
-                <div class="">
-                    <a href="http://www.creative-tim.com/product/light-bootstrap-dashboard" target="_blank" class="btn btn-info btn-block btn-fill">Download, it's free!</a>
-                </div>
-            </li>
-
-            <li class="header-title pro-title text-center">Want more components?</li>
-
-            <li class="button-container">
-                <div class="">
-                    <a href="http://www.creative-tim.com/product/light-bootstrap-dashboard-pro" target="_blank" class="btn btn-warning btn-block btn-fill">Get The PRO Version!</a>
-                </div>
-            </li>
-
-            <li class="header-title" id="sharrreTitle">Thank you for sharing!</li>
-
-            <li class="button-container">
-				<button id="twitter" class="btn btn-social btn-outline btn-twitter btn-round sharrre"><i class="fa fa-twitter"></i> · 256</button>
-                <button id="facebook" class="btn btn-social btn-outline btn-facebook btn-round sharrre"><i class="fa fa-facebook-square"></i> · 426</button>
-            </li>
-        </ul>
-    </div>
-</div>
- -->
 </body>
 <!--   Core JS Files   -->
-<script src="assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
-<script src="assets/js/core/popper.min.js" type="text/javascript"></script>
-<script src="assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="../../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="../../assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="../../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-<script src="assets/js/plugins/bootstrap-switch.js"></script>
+<script src="../../assets/js/plugins/bootstrap-switch.js"></script>
 <!--  Google Maps Plugin    -->
 
 <!--  Chartist Plugin  -->
-<script src="assets/js/plugins/chartist.min.js"></script>
+<script src="../../assets/js/plugins/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
-<script src="assets/js/plugins/bootstrap-notify.js"></script>
+<script src="../../assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
-<script src="assets/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>
+<script src="../../assets/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
-<script src="assets/js/demo.js"></script>
+<script src="../../assets/js/demo.js"></script>
 
 
 <!-- Script Map LeafletJS -->
@@ -402,19 +309,22 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 }).addTo(mymap);
 
 
-var latlng;
-var latAwal;
-var lonAwal;
+
+
+
+
+
 function gpsLokasi()
 {
-
+  // alert("Test");
   navigator.geolocation.getCurrentPosition(function(location) {
     var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
-    mymap.setView(latlng, 12);
+    var inputLat = document.getElementById('lat');
+    lat.value=location.coords.latitude;
+    var inputLon = document.getElementById('lon');
+    lon.value=location.coords.longitude;
+    mymap.setView(latlng, 15);
     newMarker = new L.marker(latlng).addTo(mymap);
-    latAwal=location.coords.latitude;
-    lonAwal=location.coords.longitude;
-
   });
 
 
@@ -424,7 +334,7 @@ function gpsLokasi()
 function remove(i)
 {
   // mymap.removeLayer(newMarker);
-    mymap.removeLayer(newMarker);
+    map.removeLayer(newMarker);
 }
 
 function disabled()
@@ -433,95 +343,25 @@ function disabled()
   document.getElementById("lon").disabled = true;
 }
 
-var latitude;
-var longitude;
-var tampilMarker=[];
-var argeojson = <?php echo json_encode($data) ?>;
 
 function manualLokasi()
-{
+{ var latitude;
+  var longitude;
   var tanda;
-  swal("Pilih Posisi Toko");
+  swal("Pilih Posisi Toko Anda");
   mymap.on('click', function(e) {
           newMarker = new L.marker(e.latlng).addTo(mymap);
           latitude=e.latlng.lat;
           longitude=e.latlng.lng;
-          latAwal=latitude;
-          lonAwal=longitude;
+          // Menampilkan lat dan lon pada input text
+          var inputLat = document.getElementById('lat');
+          lat.value=latitude;
+          var inputLon = document.getElementById('lon');
+          lon.value=longitude;
   });
-  latAwal=latitude;
-  lonAwal=longitude;
-
 
 }
 
-function lokasiSampah()
-{
-  // Sip yg ini sduah jalan
-  console.log(argeojson[0]['latitude']);
-  console.log(argeojson[0]['longitude']);
-  console.log(argeojson.length);
-
-  length= argeojson.length;
-  j=0;
-  while(j<length)
-  {
-    var marker = L.marker([argeojson[j]['latitude'], argeojson[j]['longitude']]).addTo(mymap);
-    j++;
-  }
-
-}
-
-
-var routing;
-function fungsitest()
-{
-
-  console.log("Hahaha Kampang");
-  var daerah= document.getElementById("lokasiData").value;
-  console.log(daerah);
-  //Pisahkan lagi variabel tersebut
-  var coords = daerah.split(",");
-  console.log(coords);
-
-
-  routing=L.Routing.control({
-  waypoints: [
-    L.latLng(latAwal, lonAwal),
-    L.latLng(coords[0],coords[1])
-  ]
-  }).addTo(mymap);
-
-
-
-}
-
-function removeRute()
-{
-  swal("Masukkan Script Remove Rute Disini");
-
-
-}
-
-function fungsitest()
-{
-
-  console.log("Hahaha Kampang");
-  var daerah= document.getElementById("lokasiData").value;
-  console.log(daerah);
-  //Pisahkan lagi variabel tersebut
-  var coords = daerah.split(",");
-  console.log(coords);
-
-
-  L.Routing.control({
-  waypoints: [
-    L.latLng(latAwal, lonAwal),
-    L.latLng(coords[0],coords[1])
-  ]
-  }).addTo(mymap);
-
-}
 
 
 </script>

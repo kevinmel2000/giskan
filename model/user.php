@@ -15,7 +15,6 @@ class user
   public $longitude;
 
  	function __construct(){}
-
   function register($data){
    		global $pdo;
       try{
@@ -46,11 +45,6 @@ class user
       }
   }
 
-  function getAll(){
-      $query = "SELECT * FROM user";
-      return $this->get_data($query, '');
-  }
-
   function get_data($query, $param){
       try{
         global $pdo;
@@ -60,14 +54,17 @@ class user
         }else{
           $req->execute($param);
         }
+
+        $rows = $req->rowCount();
         $status = false;
 
-        if($req->rowCount() > 0){
-          $status=true;
-          $result = $req->fetchAll();
+        if($rows > 0){
+          $status = true;
         }
 
-        return array('status' => $status, 'rows' => $req->rowCount(), 'data' => $result);
+        $data = $req->fetch(PDO::FETCH_NAMED);
+
+        return array('status' => $status, 'rows' => $rows, 'data' => $data);
       }catch(PDOException $e){
         echo "Error! gagal mengambil data: ".$e->getMessage();
       }

@@ -1,13 +1,11 @@
 <?php
   session_start();
-  include '../../include/validator.php';
   include '../../model/user.php';
+  include '../../include/validator.php';
   $user = new user();
   $user->check();
-
-  print_r($_SESSION);
+  $all = $user->getAll();
 ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -15,6 +13,8 @@
     <title></title>
   </head>
   <body>
-
+    <?php
+    echo $all['data'][0]['longitude'];
+     ?>
   </body>
 </html>
