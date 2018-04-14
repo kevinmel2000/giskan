@@ -152,6 +152,34 @@
             <!-- End Navbar -->
             <div class="content">
                 <div class="container-fluid">
+
+                  <div class="row" style="background-color:#c2f276">
+
+                    <div class="panel panel-info">
+
+                      <div class="panel-body">
+                        <?php
+
+                        //Load data auto gempa
+
+                        $list_warning= new SimpleXMLElement('http://data.bmkg.go.id/Maritim_Cuaca_Pelayaran.xml',null,true);
+                        $data=$list_warning->Laut;
+                        $total= $data->count();
+                        $i=0;
+                        while ($i<$total)
+                        {
+                          echo $data."<br/>";
+                          $i++;
+                        }
+                  ?>
+
+                      </div>
+
+                    </div>
+
+
+
+                  </div>
                     <div class="row">
                         <div class="col-md-12">
                           <!-- Div Peta -->
@@ -159,7 +187,7 @@
 
                              <?php
 
-                             include 'plugin_weather/example/index.php';
+                             include 'weather.php';
 
                               ?>
 
@@ -168,6 +196,36 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
+                          <h2>Warning Gelombang</h1>
+
+
+                                  <?php
+
+                                  //Load data auto gempa
+
+                                  $list_warning= new SimpleXMLElement('http://data.bmkg.go.id/Maritim_Tinggi_Gelombang_12jam.xml',null,true);
+                                  foreach ($list_warning->data->Gelombang->DataGelombang as $row) {
+
+
+                                     // echo $row->Wilayah->Count();
+                                     // echo $row->Wilayah->Wil[0];
+                                  }
+
+                                  $data=$list_warning->data->Gelombang->DataGelombang->Wilayah;
+                                  $gelombang=$list_warning->data->Gelombang->DataGelombang;
+                                  // echo $data->Wil->count();
+                                  $total= $data->Wil->count();
+                                  $total_gelombang=$gelombang->count();
+                                  // echo $total_gelombang;
+
+                                  $i=0;
+                                  while ($i<$total)
+                                  {
+                                    echo $data->Wil[$i]."<br/>";
+                                    $i++;
+                                  }
+                            ?>
+
 
                         </div>
                         <div class="col-md-6">
