@@ -113,13 +113,13 @@
                             <p>User</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item active">
                         <a class="nav-link" href="./barang.php">
                             <i class="nc-icon nc-pin-3"></i>
                             <p>Data Barang</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li >
                         <a class="nav-link" href="./notifications.html">
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Notifications</p>

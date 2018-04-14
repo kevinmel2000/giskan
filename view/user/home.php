@@ -112,7 +112,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./barang.php">
+                        <a class="nav-link" href="../../barang.php">
                             <i class="nc-icon nc-pin-3"></i>
                             <p>Data Barang</p>
                         </a>
