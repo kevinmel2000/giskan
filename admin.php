@@ -222,8 +222,6 @@ include 'proses/getdata.php';
                                     <b><h3 style="color:blue;" id="textSaya"></h3></b>
                                   </div>
 
-                                  <button onclick="tandaiSelesai()" style="margin-top:20px;" type="button" class="btn btn-warning" name="button">Tandai Selesai</button>
-
 
 
 

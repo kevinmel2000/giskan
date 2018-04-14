@@ -72,9 +72,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./typography.html">
+                        <a class="nav-link" href="./view/user/edit.php">
                             <i class="nc-icon nc-paper-2"></i>
-                            <p>Typography</p>
+                            <p>Edit Data</p>
                         </a>
                     </li>
                     <li>
@@ -141,8 +141,8 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
-                                    <span class="no-icon">Log out</span>
+                                <a class="nav-link" href="login.php">
+                                    <span class="no-icon">Log In</span>
                                 </a>
                             </li>
                         </ul>

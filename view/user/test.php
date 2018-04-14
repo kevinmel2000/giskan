@@ -142,11 +142,8 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <form class="" action="" method="post">
-                                      <input class="no-icon" type="submit" name="logout" value="Logout">
-                                    </form>
-
+                                <a class="nav-link" href="#pablo">
+                                    <span class="no-icon">Log out</span>
                                 </a>
                             </li>
                         </ul>
@@ -194,12 +191,12 @@
                                          <input type="text" name="no_telefon" value="<?php echo $_SESSION['no_telefon'] ?>">
                                        </div>
                                        <div class="">
-
-                                         <input id="lat" type="hidden" name="latitude" value="<?php echo $_SESSION['latitude'] ?>">
+                                         <label for="latitude">Latitude</label>
+                                         <input id="lat" type="text" name="latitude" value="<?php echo $_SESSION['latitude'] ?>">
                                        </div>
                                        <div class="">
-
-                                         <input id="lon" type="hidden" name="longitude" value="<?php echo $_SESSION['longitude'] ?>">
+                                         <label for="nama">Longitude</label>
+                                         <input id="lon" type="text" name="longitude" value="<?php echo $_SESSION['longitude'] ?>">
                                        </div>
                                        <div class="">
                                          <input type="submit" name="update_profile" value="Update">
