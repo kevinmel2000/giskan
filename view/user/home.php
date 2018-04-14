@@ -2,10 +2,14 @@
   session_start();
   include '../../include/validator.php';
   include '../../model/user.php';
+  include '../../model/barang.php';
   $user = new user();
   $user->check();
 
   print_r($_SESSION);
+
+  $barang = new barang();
+  $data = $barang->show();
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +42,20 @@
     <div>
       <a href="barang.php">Barang</a>
     </div>
+
+    <table>
+      <?php
+          // print_r($data);
+          foreach ($data['data'] as $rows) {
+            echo "<tr>";
+              for ($i=0 ; $i < 6 ; $i++ ) {
+                echo "<td>".$rows[$i]."</td>";
+              }
+              echo "<td><a href='editbarang?id=".$rows['id']."'>edit</a>";
+            echo "</tr>";
+          }
+       ?>
+    </table>
 
   </body>
 </html>
