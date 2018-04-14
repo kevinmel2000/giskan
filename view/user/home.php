@@ -57,6 +57,9 @@
 
   <style>
     #mapid { height: 500px; }
+    td{
+
+    }
   </style>
 </head>
 
@@ -198,9 +201,9 @@
             </nav>
             <!-- End Navbar -->
             <div class="content">
-                <div class="container-fluid">
+
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-sm-3">
                             <div class="panel panel-info">
                               <div class="panel-head">
                                    <?php echo $_SESSION['nama']; ?>
@@ -221,37 +224,32 @@
                               </div>
                             </div>
                         </div>
-                        <div class="col-md-9">
-                          <table>
-                            <tr>
-                              <th>nama</th>
-                              <th>harga</th>
-                              <th>keterangan</th>
-                              <th>Aksi</th>
-                            </tr>
+                        <div class="col-sm-9">
+                          <table style="font-size:17px;">
+
+                              <th width="300px">Nama</th>
+                              <th width="300px">Harga</th>
+                              <th width="300px">Keterangan</th>
+                              <th width="300px">Aksi</th>
+
                             <?php
-                              foreach ($data as $dat) {
-                                echo "
-                                <tr>
-                                <td>".$dat['nama']."</td>
-                                <td>".$dat['harga']."</td>
-                                <td>".$dat['keterangan']."</td>
-                                <td><a href='view.php?id=".$dat['id']."'>Lihat</a></td>
-                                </tr>";
+                            if(count($data)>0){
+                                foreach ($data as $dat) {
+                                  echo "
+                                  <tr>
+                                  <td>".$dat['nama']."</td>
+                                  <td>".$dat['harga']."</td>
+                                  <td>".$dat['keterangan']."</td>
+                                  <td><a href='view.php?id=".$dat['id']."'>Lihat</a></td>
+                                  </tr>";
+                                }
                               }
                             ?>
                           </table>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
 
-                        </div>
-                        <div class="col-md-6">
 
-                        </div>
-                    </div>
-                </div>
             </div>
             <footer class="footer">
                 <div class="container">
