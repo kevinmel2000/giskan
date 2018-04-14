@@ -48,7 +48,7 @@ include 'proses/getdata.php';
 
   </div>
     <div class="wrapper">
-        <div class="sidebar" data-image="assets/img/sidebar-5.jpg">
+        <div class="sidebar" data-color=green data-image="assets/img/sidebar-5.jpg">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -64,19 +64,19 @@ include 'proses/getdata.php';
                     <li >
                         <a class="nav-link" href="index.php">
                             <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Laporkan Sampah</p>
+                            <p>Inputkan Toko</p>
                         </a>
                     </li>
                     <li >
                         <a class="nav-link" href="./lokasi.php">
                             <i class="nc-icon nc-circle-09"></i>
-                            <p>Data Lokasi Sampah</p>
+                            <p>Data Toko</p>
                         </a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="./admin.php">
                             <i class="nc-icon nc-notes"></i>
-                            <p>Admin Verifikasi</p>
+                            <p>Input Lokasi</p>
                         </a>
                     </li>
                     <li>

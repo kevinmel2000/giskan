@@ -68,7 +68,7 @@
                     <li>
                         <a class="nav-link" href="./admin.php">
                             <i class="nc-icon nc-notes"></i>
-                            <p>Admin Verifikasi</p>
+                            <p>Input Lokasi</p>
                         </a>
                     </li>
                     <li>
