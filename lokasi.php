@@ -95,7 +95,7 @@ $all=$user->getAll()['data'];
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./maps.html">
+                        <a class="nav-link" href="./barang.php">
                             <i class="nc-icon nc-pin-3"></i>
                             <p>Data Barang</p>
                         </a>
