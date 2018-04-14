@@ -46,12 +46,9 @@ class user
       }
   }
 
-  function getByField($data){
-      $query = "SELECT :field FROM user";
-      $param = array(
-          ':field' => $data,
-        );
-      return $this->get_data($query, $param);
+  function getAll(){
+      $query = "SELECT * FROM user";
+      return $this->get_data($query, '');
   }
 
   function get_data($query, $param){

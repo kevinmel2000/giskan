@@ -4,7 +4,7 @@
   include '../../include/validator.php';
   $user = new user();
   $user->check();
-  $all = $user->getByField('longitude');
+  $all = $user->getAll();
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -14,9 +14,6 @@
   </head>
   <body>
     <?php
-      foreach ($all['data'][0] as $key => $value) {
-        echo $key."=>".$value."<br>";
-      }
      ?>
   </body>
 </html>
