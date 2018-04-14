@@ -14,6 +14,7 @@
   </head>
   <body>
     <?php
+    echo $all['data'][0]['longitude'];
      ?>
   </body>
 </html>
