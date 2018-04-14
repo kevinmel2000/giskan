@@ -3,7 +3,9 @@
 	include 'connection.php';
 	include 'script.php';
 // Register
-	$a = new function_script();
+
+	$script = new function_script();
+
 	if(isset($_POST['register'])) {
 				$user = new user();
         $user->register($_POST);
@@ -16,11 +18,13 @@
 
 	if(isset($_POST['logout'])){
 				session_destroy();
-				$a->redirect('../../login');
+				$script->redirect('../../login');
 	}
 
 	if(isset($_POST['update_profile'])){
 				$user = new user();
 				$user->update($_POST);
 	}
+
+
  ?>

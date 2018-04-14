@@ -2,6 +2,10 @@
   session_start();
   include '../../include/validator.php';
   include '../../model/user.php';
+  $user = new user();
+  $user->check();
+
+  print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>

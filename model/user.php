@@ -71,39 +71,13 @@ class user
   }
 
   function setSession($data){
-    if(isset($data['id'])){
-        $_SESSION['id']=$data['id'];
+    foreach ($data as $key => $value) {
+      if(isset($value)){
+        $_SESSION[$key]=$value;
+      }else{
+        $_SESSION[$key]="";
+      }
     }
-    if(isset($data['username'])){
-        $_SESSION['username']=$data['username'];
-    }
-    if(isset($data['password'])){
-        $_SESSION['password']=$data['password'];
-    }
-    if(isset($data['email'])){
-        $_SESSION['email']=$data['email'];
-    }
-    if(isset($data['role'])){
-        $_SESSION['role']=$data['role'];
-    }
-    if(isset($data['nama'])){
-        $_SESSION['nama']=$data['nama'];
-    }
-    if(isset($data['logo'])){
-        $_SESSION['logo']=$data['logo'];
-    }
-    if(isset($data['alamat'])){
-        $_SESSION['alamat']=$data['alamat'];
-    }
-    if(isset($data['no_telefon'])){
-        $_SESSION['no_telefon']=$data['no_telefon'];
-    }
-    if(isset($data['latitude'])){
-        $_SESSION['latitude']=$data['latitude'];
-    }
-    if(isset($data['longitude'])){
-        $_SESSION['longitude']=$data['longitude'];
-    }    
   }
 
   function update($data){
@@ -135,6 +109,12 @@ class user
       $script->redirect('home');
     }catch(PDOException $e){
       echo "Update Gagal";
+    }
+  }
+
+  function check(){
+    if(!isset($_SESSION['id'])){
+      header('location: ../../');
     }
   }
 

@@ -2,6 +2,8 @@
   session_start();
   include '../../model/user.php';
   include '../../include/validator.php';
+  $user = new user();
+  $user->check();
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
