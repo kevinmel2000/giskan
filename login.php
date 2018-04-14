@@ -7,22 +7,29 @@
 <!doctype html>
 <head>
 
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
     <!-- Right Panel -->
 
-    <div id="right-panel" class="right-panel">
+<div class="container">
+  <div class="panel panel-info">
 
-        <div class="breadcrumbs">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                        <h1>Giskan</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="panel-head">
+      <h2>GisKan</h2>
+    </div>
 
+    <div class="panel-body">
+      <div class="row">
         <div class="col-lg-6">
                     <div class="card">
                       <div class="card-header">
@@ -47,9 +54,14 @@
                     </div>
                   </div>
 
+      </div>
+    </div>
 
-    </div><!-- /#right-panel -->
+  </div>
+</div>
 
-    <!-- Right Panel -->
+
+
+
 </body>
 </html>

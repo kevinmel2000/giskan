@@ -1,17 +1,11 @@
-<?php
-  session_start();
-  include '../../model/user.php';
-  include '../../include/validator.php';
-  $user = new user();
-  $user->check();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../../assets/img/favicon.ico">
+    <link rel="icon" type="../../image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>GisKan GIS Untuk Nelayan</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -72,15 +66,15 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./admin.php">
+                        <a class="nav-link" href="./input.php">
                             <i class="nc-icon nc-notes"></i>
                             <p>Input Lokasi</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./typography.html">
+                        <a class="nav-link" href="./view/user/edit.php">
                             <i class="nc-icon nc-paper-2"></i>
-                            <p>Typography</p>
+                            <p>Edit Data</p>
                         </a>
                     </li>
                     <li>
@@ -101,7 +95,12 @@
                             <p>Notifications</p>
                         </a>
                     </li>
-
+                    <li class="nav-item active active-pro">
+                        <a class="nav-link active" href="upgrade.html">
+                            <i class="nc-icon nc-alien-33"></i>
+                            <p>Gis Untuk Nelayan</p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -142,11 +141,8 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <form class="" action="" method="post">
-                                      <input class="no-icon" type="submit" name="logout" value="Logout">
-                                    </form>
-
+                                <a class="nav-link" href="login.php">
+                                    <span class="no-icon">Log In</span>
                                 </a>
                             </li>
                         </ul>
@@ -156,79 +152,27 @@
             <!-- End Navbar -->
             <div class="content">
                 <div class="container-fluid">
+
+                  <div class="row" style="background-color:#c2f276">
+
+
+
+
+
+                  </div>
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="card ">
-                                <div class="card-header ">
-                                    <h4 class="card-title">Map Menu</h4>
-                                    <p style="color:red;"onclick="remove()" class="card-category"><b>UNDO</b></p>
-                                </div>
-
-
-
-                                <div class="card-body ">
-                                  <!-- Menu Peta -->
-                                  <button class="btn btn-info" onclick="gpsLokasi()"> GPS </button>
-                                  <button class="btn btn-info" onclick="manualLokasi()"> Manual </button>
-
-
-                                     <form method="post">
-                                       <div class="">
-                                         <label for="nama">Nama</label>
-                                         <input type="text" name="nama" value="<?php echo $_SESSION['nama'] ?>">
-                                       </div>
-                                       <div class="">
-                                         <label for="email">Email</label>
-                                         <input type="text" name="email" value="<?php echo $_SESSION['email'] ?>">
-                                       </div>
-                                       <div class="">
-                                         <label for="nama">Logo</label>
-                                         <input type="text" name="logo" value="<?php echo $_SESSION['logo'] ?>">
-                                       </div>
-                                       <div class="">
-                                         <label for="alamat">Alamat</label>
-                                         <input type="text" name="alamat" value="<?php echo $_SESSION['alamat'] ?>">
-                                       </div>
-                                       <div class="">
-                                         <label for="no_telfon">No. Telp</label>
-                                         <input type="text" name="no_telefon" value="<?php echo $_SESSION['no_telefon'] ?>">
-                                       </div>
-                                       <div class="">
-
-                                         <input id="lat" type="hidden" name="latitude" value="<?php echo $_SESSION['latitude'] ?>">
-                                       </div>
-                                       <div class="">
-
-                                         <input id="lon" type="hidden" name="longitude" value="<?php echo $_SESSION['longitude'] ?>">
-                                       </div>
-                                       <div class="">
-                                         <input type="submit" name="update_profile" value="Update">
-                                       </div>
-                                     </form>
-
-
-                                </div>
-                                <div class="card-footer ">
-                                    <div class="legend">
-
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                           <!-- Div Peta -->
-                           <div id="mapid">
+                           <div id="map" style="height:600px;">
+
+
 
                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
+
 
                         </div>
                         <div class="col-md-6">
@@ -296,75 +240,7 @@
 
 <!-- Script Map LeafletJS -->
 <!-- Tampilkan Peta  -->
-<script>
 
-
-
-var mymap = L.map('mapid').setView([-0.9154789999999999, 100.46043549999999], 13);
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1IjoiYXh2ZXI3IiwiYSI6ImNqZjZ0NXk2NjA4NzI0MG44djVyOXU2cXAifQ.N-pJV3Uw0nOhjvLz9E4Zuw'
-}).addTo(mymap);
-
-
-
-
-
-
-
-function gpsLokasi()
-{
-  // alert("Test");
-  navigator.geolocation.getCurrentPosition(function(location) {
-    var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
-    var inputLat = document.getElementById('lat');
-    lat.value=location.coords.latitude;
-    var inputLon = document.getElementById('lon');
-    lon.value=location.coords.longitude;
-    mymap.setView(latlng, 15);
-    newMarker = new L.marker(latlng).addTo(mymap);
-  });
-
-
-
-}
-
-function remove(i)
-{
-  // mymap.removeLayer(newMarker);
-    map.removeLayer(newMarker);
-}
-
-function disabled()
-{
-  document.getElementById("lat").disabled = true;
-  document.getElementById("lon").disabled = true;
-}
-
-
-function manualLokasi()
-{ var latitude;
-  var longitude;
-  var tanda;
-  swal("Pilih Posisi Sampah tersebut");
-  mymap.on('click', function(e) {
-          newMarker = new L.marker(e.latlng).addTo(mymap);
-          latitude=e.latlng.lat;
-          longitude=e.latlng.lng;
-          // Menampilkan lat dan lon pada input text
-          var inputLat = document.getElementById('lat');
-          lat.value=latitude;
-          var inputLon = document.getElementById('lon');
-          lon.value=longitude;
-  });
-
-}
-
-
-
-</script>
 
 
 </html>
