@@ -36,5 +36,9 @@
 			$barang->update($_POST);
 	}
 
+	if(isset($_POST['search'])){
+			header('Location: ?nama='.$_POST['nama']);
+	}
+
 
  ?>

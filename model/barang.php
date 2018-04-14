@@ -50,7 +50,7 @@ class barang{
 
         $rows = $req->rowCount();
         $status = false;
-
+        $result = NULL;
         if($req->rowCount() > 0){
           $status=true;
           $result = $req->fetchAll();
@@ -85,6 +85,11 @@ class barang{
     }catch(PDOException $e){
       echo "Update Gagal";
     }
+  }
+
+  function getByNama($nama){
+    $query = "SELECT * FROM barang WHERE nama LIKE '%".$nama."%'";
+    return $this->get_data($query, '');
   }
 
 }
