@@ -56,7 +56,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php">
                             <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Inputkan Toko</p>
+                            <p>Home</p>
                         </a>
                     </li>
                     <li>

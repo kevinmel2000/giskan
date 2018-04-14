@@ -79,39 +79,39 @@
                 </div>
                 <ul class="nav">
                     <li >
-                        <a class="nav-link" href="index.php">
+                        <a class="nav-link" href="../../index.php">
                             <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Inputkan Toko</p>
+                            <p>Home</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./lokasi.php">
+                    <li >
+                        <a class="nav-link" href="../../lokasi.php">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>Data Toko</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./admin.php">
+                        <a class="nav-link" href="../../input.php">
                             <i class="nc-icon nc-notes"></i>
                             <p>Input Lokasi</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./typography.html">
+                        <a class="nav-link" href="./edit.php">
                             <i class="nc-icon nc-paper-2"></i>
-                            <p>Typography</p>
+                            <p>Edit Data</p>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="./icons.html">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./home.php">
                             <i class="nc-icon nc-atom"></i>
-                            <p>Icons</p>
+                            <p>User</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="./maps.html">
                             <i class="nc-icon nc-pin-3"></i>
-                            <p>Maps</p>
+                            <p>Data Barang</p>
                         </a>
                     </li>
                     <li>
