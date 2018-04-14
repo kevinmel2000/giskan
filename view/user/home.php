@@ -2,6 +2,7 @@
   session_start();
   include '../../include/validator.php';
   include '../../model/user.php';
+  include '../../model/barang.php';
   $user = new user();
   $user->check();
 ?>
@@ -249,6 +250,7 @@
         </div>
     </div>
 
+
 </body>
 <!--   Core JS Files   -->
 <script src="../../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
@@ -271,6 +273,19 @@
 <!-- Script Map LeafletJS -->
 <!-- Tampilkan Peta  -->
 
+    <table>
+      <?php
+          // print_r($data);
+          foreach ($data['data'] as $rows) {
+            echo "<tr>";
+              for ($i=0 ; $i < 6 ; $i++ ) {
+                echo "<td>".$rows[$i]."</td>";
+              }
+              echo "<td><a href='editbarang?id=".$rows['id']."'>edit</a>";
+            echo "</tr>";
+          }
+       ?>
+    </table>
 
-
+  </body>
 </html>
