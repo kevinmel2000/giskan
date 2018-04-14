@@ -1,13 +1,33 @@
+<?php
+  include "include/connection.php";
+  include "model/barang.php";
+  include "include/validator.php";
 
+  $barang = new barang();
+
+  if(!isset($_GET['nama'])){
+    $data = $barang->showAll();
+  }else{
+    $data = $barang->getByNama($_GET['nama']);
+  }
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>GisKan GIS Untuk Nelayan</title>
+    <title>GIS Pemantau Sampah</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -17,8 +37,6 @@
     <link href="assets/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="assets/css/demo.css" rel="stylesheet" />
-
-
 
     <!-- Leaflet JS Sisip Script -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
@@ -30,6 +48,13 @@
   crossorigin=""></script>
   <!-- Sweetalert -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- Leaflet Routing -->
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
   <style>
     #mapid { height: 500px; }
   </style>
@@ -49,44 +74,44 @@
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="http://www.creative-tim.com" class="simple-text">
-                        Kuaci Clan
+                        Creative Tim
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active">
+                    <li >
                         <a class="nav-link" href="index.php">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Inputkan Toko</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item active">
                         <a class="nav-link" href="./lokasi.php">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>Data Toko</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./input.php">
+                        <a class="nav-link" href="./admin.php">
                             <i class="nc-icon nc-notes"></i>
                             <p>Input Lokasi</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./view/user/edit.php">
+                        <a class="nav-link" href="./typography.html">
                             <i class="nc-icon nc-paper-2"></i>
-                            <p>Edit Data</p>
+                            <p>Typography</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./view/user/home.php">
+                        <a class="nav-link" href="./icons.html">
                             <i class="nc-icon nc-atom"></i>
-                            <p>User</p>
+                            <p>Icons</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="./maps.html">
                             <i class="nc-icon nc-pin-3"></i>
-                            <p>Data Barang</p>
+                            <p>Maps</p>
                         </a>
                     </li>
                     <li>
@@ -98,7 +123,7 @@
                     <li class="nav-item active active-pro">
                         <a class="nav-link active" href="upgrade.html">
                             <i class="nc-icon nc-alien-33"></i>
-                            <p>Gis Untuk Nelayan</p>
+                            <p>Upgrade to PRO</p>
                         </a>
                     </li>
                 </ul>
@@ -108,8 +133,12 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class=" container-fluid  ">
-                    <a class="navbar-brand" href="#pablo"> GisKan </a>
-
+                    <a class="navbar-brand" href="#pablo"> Dashboard </a>
+                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                    </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
                         <ul class="nav navbar-nav mr-auto">
                             <li class="nav-item">
@@ -118,8 +147,26 @@
                                     <span class="d-lg-none">Dashboard</span>
                                 </a>
                             </li>
-
-
+                            <li class="dropdown nav-item">
+                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                    <i class="nc-icon nc-planet"></i>
+                                    <span class="notification">5</span>
+                                    <span class="d-lg-none">Notification</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Notification 1</a>
+                                    <a class="dropdown-item" href="#">Notification 2</a>
+                                    <a class="dropdown-item" href="#">Notification 3</a>
+                                    <a class="dropdown-item" href="#">Notification 4</a>
+                                    <a class="dropdown-item" href="#">Another notification</a>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nc-icon nc-zoom-split"></i>
+                                    <span class="d-lg-block">&nbsp;Search</span>
+                                </a>
+                            </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
@@ -141,8 +188,8 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="login.php">
-                                    <span class="no-icon">Log In</span>
+                                <a class="nav-link" href="#pablo">
+                                    <span class="no-icon">Log out</span>
                                 </a>
                             </li>
                         </ul>
@@ -152,114 +199,60 @@
             <!-- End Navbar -->
             <div class="content">
                 <div class="container-fluid">
-
-
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-9">
                           <!-- Div Peta -->
-                           <div id="map" style="height:600px;">
+                           <div id="mapid">
 
-                             <?php
+                             <div class="">
+                               <form class="form-group" action="" method="post">
 
-                             include 'weather.php';
+                                 <div class="row">
 
-                              ?>
+                                   <div class="col-sm-4">
+                                     <label  for="input"></label>
+                                     <input type="text" name="nama" value="">
+                                   </div>
+
+                                   <div class="col-sm-4">
+                                      <input type="submit" name="search" value="Cari">
+                                   </div>
+
+                                 </div>
+                                 <div class="">
+
+                                 </div>
+                                 <div class="">
+
+                                 </div>
+                               </form>
+                             </div>
+                             <div class="">
+
+                                 <?php
+                                 if($data['rows']>0){
+                                   foreach ($data['data'] as $value) {
+                                     echo "<tr>";
+                                     for ($i=2; $i < 6 ; $i++) {
+                                       echo "<div style='background-color:#97cc43;'>".$value[$i]."</div>";
+                                     }
+                                     echo "<div style='background-color:#89c12e;' ><a href='lihat.php?id=$value[0]'>Lihat</a></div>";
+                                   }
+                                 }
+                                 ?>
+
+                             </div>
 
                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                          <h2>Warning Gelombang</h1>
 
-
-                                  <?php
-
-                                  //Load data auto gempa
-
-                                  $list_warning= new SimpleXMLElement('http://data.bmkg.go.id/Maritim_Tinggi_Gelombang_12jam.xml',null,true);
-                                  foreach ($list_warning->data->Gelombang->DataGelombang as $row) {
-
-
-                                     // echo $row->Wilayah->Count();
-                                     // echo $row->Wilayah->Wil[0];
-                                  }
-
-                                  $data=$list_warning->data->Gelombang->DataGelombang->Wilayah;
-                                  $gelombang=$list_warning->data->Gelombang->DataGelombang;
-                                  // echo $data->Wil->count();
-                                  $total= $data->Wil->count();
-                                  $total_gelombang=$gelombang->count();
-                                  // echo $total_gelombang;
-
-
-                            ?>
-
-                            <div class="card strpied-tabled-with-hover">
-                                <div class="card-header ">
-                                    <h4 class="card-title">Striped Table with Hover</h4>
-                                    <p class="card-category">Here is a subtitle for this table</p>
-                                </div>
-                                <div class="card-body table-full-width table-responsive">
-                                    <table class="table table-hover table-striped">
-                                        <thead>
-                                            <th>No</th>
-                                            <th>Daerah</th>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-
-                                            $i=0;
-                                            $j=$i+1;
-                                            while ($i<$total)
-                                            {
-                                              echo "<tr>"."<td>".$j."</td>"."<td>".$data->Wil[$i]."</td>"."</tr>";
-                                              $i++;
-                                              $j++;
-                                            }
-
-                                             ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
                         </div>
-
                         <div class="col-md-6">
-                          <h2> Info Gelombang </h2>
-                          <?php
 
-                          //Load data auto gempa
-
-                          $list_warning= new SimpleXMLElement('http://data.bmkg.go.id/Maritim_Cuaca_Pelayaran.xml',null,true);
-                          $data=$list_warning->Laut;
-                          $total= $data->count();
-                          $i=0;
-                          while ($i<$total)
-                          {
-                            echo $data."<br/>";
-                            $i++;
-                          }
-                    ?>
                         </div>
-
-
-
-
-                            <div class="panel panel-info">
-
-                              <div class="panel-body">
-
-
-                              </div>
-
-                            </div>
-
-
-
-
-
-
                     </div>
                 </div>
             </div>
@@ -400,22 +393,7 @@
 
 <!-- Script Map LeafletJS -->
 <!-- Tampilkan Peta  -->
-<script>
 
-
-
-// var mymap = L.map('mapid').setView([-0.9154789999999999, 100.46043549999999], 13);
-// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-//     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-//     maxZoom: 18,
-//     id: 'mapbox.streets',
-//     accessToken: 'pk.eyJ1IjoiYXh2ZXI3IiwiYSI6ImNqZjZ0NXk2NjA4NzI0MG44djVyOXU2cXAifQ.N-pJV3Uw0nOhjvLz9E4Zuw'
-// }).addTo(mymap);
-
-
-
-
-</script>
 
 
 </html>

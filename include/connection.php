@@ -1,7 +1,7 @@
 <?php
 	$host = "localhost";
     $user = "root";
-    $password = "root";
+    $password = "";
     $dbname = "giskan";
 
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $password, array(
