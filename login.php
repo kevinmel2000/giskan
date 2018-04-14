@@ -1,5 +1,6 @@
 <?php
-  session_start();
+  session_start();  
+  include 'model/user.php';
   include 'include/validator.php';
  ?>
 

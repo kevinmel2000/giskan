@@ -1,6 +1,6 @@
 <?php
+  include 'model/user.php';
   include 'include/validator.php';
-
  ?>
 
 <!doctype html>

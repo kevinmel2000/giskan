@@ -1,4 +1,7 @@
-<?php session_start();?>
+<?php session_start();
+  include '../../include/validator.php';
+  include '../../model/user.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -10,5 +13,20 @@
     <div>
       <?php echo $_SESSION['nama']; ?>
     </div>
+    <div>
+      <?php echo $_SESSION['email']; ?>
+    </div>
+    <div>
+      <?php echo $_SESSION['longitude']; ?>
+    </div>
+    <div>
+      <a href="edit.php?id=<?php echo $_SESSION['id'] ?>">Edit</a>
+    </div>
+    <div>
+      <form class="" method="post">
+        <input type="submit" name="logout" value="Logout">
+      </form>
+    </div>
+
   </body>
 </html>
