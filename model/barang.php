@@ -23,9 +23,14 @@ class barang{
     }
   }
 
-  function show(){
-      $query = "SELECT * FROM barang WHERE id_user =".$_SESSION['id'];
+  function showByIdUser($id){
+      $query = "SELECT * FROM barang WHERE id_user =".$id;
       return $this->get_data($query, '');
+  }
+
+  function showAll(){
+    $query = "SELECT * FROM barang";
+    return $this->get_data($query, '');
   }
 
   function select($id){

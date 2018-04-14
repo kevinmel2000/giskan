@@ -37,12 +37,26 @@ class user
         );
       $get = $this->get_data($query, $param);
       if($get['rows']>0){
+        print_r($get['data']['0']);
+        $this->setSession($get['data'][0]);
+        echo "<br>";
+        print_r($_SESSION);
+
         $script = new function_script();
-        $this->setSession($get['data']);
         $script->redirect('view/user/home');
       }else{
         echo "Gagal login";
       }
+  }
+
+  function setSession($data){
+    foreach ($data as $key => $value) {
+      if(isset($value)){
+        $_SESSION[$key]=$value;
+      }else{
+        $_SESSION[$key]="";
+      }
+    }
   }
 
   function get_data($query, $param){
@@ -67,16 +81,6 @@ class user
       }catch(PDOException $e){
         echo "Error! gagal mengambil data: ".$e->getMessage();
       }
-  }
-
-  function setSession($data){
-    foreach ($data as $key => $value) {
-      if(isset($value)){
-        $_SESSION[$key]=$value;
-      }else{
-        $_SESSION[$key]="";
-      }
-    }
   }
 
   function update($data){
