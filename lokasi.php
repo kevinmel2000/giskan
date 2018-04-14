@@ -1,4 +1,6 @@
 <?php
+include 'include/connection.php';
+include 'model/user.php';
 include 'proses/getdata.php';
 
  ?>
@@ -197,7 +199,7 @@ include 'proses/getdata.php';
                                   <button class="btn btn-info" onclick="gpsLokasi()"> GPS </button>
                                   <button class="btn btn-info" onclick="manualLokasi()"> Manual </button>
 
-                                  <button style="margin-top:30px;" class="btn btn-sucess" onclick="lokasiSampah()"> Lokasi Toko </button>
+                                  <button style="margin-top:30px;" class="btn btn-sucess" onclick="lokasiToko()"> Lokasi Toko </button>
                                   <select id ="lokasiData"style="margin-top:30px;" class="form-control" name="" onchange="fungsitest()">
 
                                     <?php
@@ -436,7 +438,7 @@ function disabled()
 var latitude;
 var longitude;
 var tampilMarker=[];
-var argeojson = <?php echo json_encode($data) ?>;
+var argeojson = <?php echo json_encode($all) ?>;
 
 function manualLokasi()
 {
@@ -455,18 +457,22 @@ function manualLokasi()
 
 }
 
-function lokasiSampah()
+function lokasiToko()
 {
   // Sip yg ini sduah jalan
-  console.log(argeojson[0]['latitude']);
-  console.log(argeojson[0]['longitude']);
+  // console.log(argeojson[0]['latitude']);
+  // console.log(argeojson[0]['longitude']);
   console.log(argeojson.length);
+  console.log(argeojson[0]['latitude']);
 
   length= argeojson.length;
   j=0;
   while(j<length)
   {
-    var marker = L.marker([argeojson[j]['latitude'], argeojson[j]['longitude']]).addTo(mymap);
+    if(argeojson[j]['latitude']!=""&&argeojson[j]['longitude']!="")
+      {
+        var marker = L.marker([argeojson[j]['latitude'], argeojson[j]['longitude']]).addTo(mymap);
+      }
     j++;
   }
 
