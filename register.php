@@ -1,10 +1,11 @@
 <?php
+  include 'include/validator.php';
 
  ?>
 
 <!doctype html>
 <head>
-  <?php include "include/head.php"; ?>
+
 </head>
 <body>
     <!-- Right Panel -->
@@ -39,6 +40,10 @@
                             <div class="row form-group">
                               <div class="col col-md-3"><label for="text-input" class=" form-control-label">Password</label></div>
                               <div class="col-12 col-md-9"><input type="password" id="password" name="password" placeholder="password" class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                              <div class="col col-md-3"><label for="text-input" class=" form-control-label">Email</label></div>
+                              <div class="col-12 col-md-9"><input type="text" id="email" name="email" placeholder="email" class="form-control"></div>
                             </div>
                         </div>
                         <div class="card-footer">
