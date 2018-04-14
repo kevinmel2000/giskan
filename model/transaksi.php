@@ -19,6 +19,7 @@ class transaksi{
 
         $rows = $req->rowCount();
         $status = false;
+        $result = null;
 
         if($rows > 0){
           $status = true;
@@ -42,6 +43,14 @@ class transaksi{
       header('Location: login.php');
 
     }
+  }
+
+  function getByBarang($id){
+    $query = "SELECT transaksi.id_barang,barang.id AS id_barang,user.* FROM transaksi
+              JOIN barang ON transaksi.id_barang=barang.id
+              JOIN user ON barang.id_user=user.id
+              WHERE id_barang=".$id;
+    return $this->get_data($query, '');
   }
 }
 ?>

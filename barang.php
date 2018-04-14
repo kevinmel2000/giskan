@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include "include/connection.php";
   include "model/barang.php";
   include "include/validator.php";

@@ -28,11 +28,6 @@ class barang{
       return $this->get_data($query, '');
   }
 
-  function showAll(){
-    $query = "SELECT * FROM barang";
-    return $this->get_data($query, '');
-  }
-
   function select($id){
       $query = "SELECT * FROM barang WHERE id=".$id;
       return $this->get_data($query, '');
@@ -89,6 +84,17 @@ class barang{
 
   function getByNama($nama){
     $query = "SELECT * FROM barang WHERE nama LIKE '%".$nama."%'";
+    if(isset($_SESSION['id'])){
+      $query = $query." AND id_user!=".$_SESSION['id'];
+    }
+    return $this->get_data($query, '');
+  }
+
+  function showAll(){
+    $query = "SELECT * FROM barang";
+    if(isset($_SESSION['id'])){
+      $query = $query." WHERE id_user!=".$_SESSION['id'];
+    }
     return $this->get_data($query, '');
   }
 

@@ -8,8 +8,8 @@
   $barang = new barang();
   $data = $barang->getById($_GET['id'])['data'][0];
 
-  $user = new user();
-  $duser = $user->getById($data['id_user'])['data'][0];
+  $transaksi = new transaksi();
+  $trans = $transaksi->getByBarang($_GET['id'])['data'];
 
   include "../../include/validator.php";
  ?>
@@ -34,40 +34,30 @@
         <td><?php echo $data['foto'];?></td>
       </tr>
       <tr>
-        <td>Nama</td>
+        <td>Keterangan</td>
         <td><?php echo $data['keterangan'];?></td>
-      </tr>
-      <tr>
-        <form class="" action="" method="post">
-          <div class="">
-            <label for="jumlah"></label>
-            <input type="text" name="jumlah" value="" placeholder="jumlah">
-          </div>
-          <div class="">
-          <input type="submit" name="pesan" value="Pesan">
-          </div>
-
-        </form>
       </tr>
     </table>
     <br>
+    <label>PEMESANAN</label>
     <table>
       <tr>
-        <td>Nama</td>
-        <td><?php echo $duser['nama'];?></td>
+        <th>Nama</th>
+        <th>Alamat</th>
+        <th>No Telefon</th>
       </tr>
-      <tr>
-        <td>Alamat</td>
-        <td><?php echo $duser['alamat'];?></td>
-      </tr>
-      <tr>
-        <td>Email</td>
-        <td><?php echo $duser['email'];?></td>
-      </tr>
-      <tr>
-        <td>Logo</td>
-        <td><?php echo $duser['logo'];?></td>
-      </tr>
+      <?php
+      if(count($trans)>0){
+        foreach ($trans as $t) {
+          echo "
+          <tr>
+          <td>".$t['nama']."</td>
+          <td>".$t['alamat']."</td>
+          <td>".$t['no_telefon']."</td>
+          </tr>";
+        }
+      }      
+      ?>
     </table>
   </body>
 </html>
