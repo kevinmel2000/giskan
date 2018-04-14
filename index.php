@@ -393,15 +393,15 @@
 
 function gpsLokasi()
 {
-
+  alert("Test");
   navigator.geolocation.getCurrentPosition(function(location) {
     var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
     var inputLat = document.getElementById('lat');
     lat.value=location.coords.latitude;
     var inputLon = document.getElementById('lon');
     lon.value=location.coords.longitude;
-    mymap.setView(latlng, 15);
-    newMarker = new L.marker(latlng).addTo(mymap);
+    standard.setView(latlng, 15);
+    newMarker = new L.marker(latlng).addTo(standard);
   });
 
 
@@ -411,7 +411,7 @@ function gpsLokasi()
 function remove(i)
 {
   // mymap.removeLayer(newMarker);
-    mymap.removeLayer(newMarker);
+    map.removeLayer(newMarker);
 }
 
 function disabled()
@@ -426,8 +426,8 @@ function manualLokasi()
   var longitude;
   var tanda;
   swal("Pilih Posisi Sampah tersebut");
-  mymap.on('click', function(e) {
-          newMarker = new L.marker(e.latlng).addTo(mymap);
+  map.on('click', function(e) {
+          newMarker = new L.marker(e.latlng).addTo(map);
           latitude=e.latlng.lat;
           longitude=e.latlng.lng;
           // Menampilkan lat dan lon pada input text
