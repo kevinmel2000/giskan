@@ -486,7 +486,7 @@ console.log(argeojson);
 var routing;
 function fungsitest()
 {
-  
+
   console.log("Hahaha Kampang");
   var daerah= document.getElementById("lokasiData").value;
   console.log(daerah);

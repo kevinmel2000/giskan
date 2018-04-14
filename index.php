@@ -78,15 +78,15 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./icons.html">
+                        <a class="nav-link" href="./view/user/home.php">
                             <i class="nc-icon nc-atom"></i>
-                            <p>Icons</p>
+                            <p>User</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="./maps.html">
                             <i class="nc-icon nc-pin-3"></i>
-                            <p>Maps</p>
+                            <p>Data Barang</p>
                         </a>
                     </li>
                     <li>
