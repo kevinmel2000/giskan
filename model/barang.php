@@ -92,5 +92,10 @@ class barang{
     return $this->get_data($query, '');
   }
 
+  function getById($id){
+    $query = "SELECT * FROM barang WHERE id=".$id;
+    return $this->get_data($query, '');
+  }
+
 }
  ?>

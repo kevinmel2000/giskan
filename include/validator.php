@@ -40,5 +40,10 @@
 			header('Location: ?nama='.$_POST['nama']);
 	}
 
+	if(isset($_POST['pesan'])){
+		$transaksi = new transaksi();
+		$transaksi->insert($_POST['jumlah'],$data['id']);
+	}
+
 
  ?>

@@ -38,7 +38,7 @@
             for ($i=2; $i < 6 ; $i++) {
               echo "<td>$value[$i]</td>";
             }
-            echo "<td><a href='lihat.php?id=$value[0]'>Lihat</a></td></tr>";
+            echo "<td><a href='detail.php?id=$value[0]'>Lihat</a></td></tr>";
           }
         }
         ?>
