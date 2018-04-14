@@ -1,9 +1,14 @@
 <?php
   session_start();
+
   include '../../model/user.php';
+  include '../../model/barang.php';
   include '../../include/validator.php';
   $user = new user();
   $user->check();
+
+  $barang = new barang();
+  $data = $barang->select($_GET['id']);
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -14,35 +19,23 @@
   <body>
     <form method="post">
       <div class="">
-        <label for="nama">Nama</label>
-        <input type="text" name="nama" value="<?php echo $_SESSION['nama'] ?>">
+        <label for="nama">Nama Barang</label>
+        <input type="text" name="nama">
       </div>
       <div class="">
-        <label for="email">Email</label>
-        <input type="text" name="email" value="<?php echo $_SESSION['email'] ?>">
+        <label for="harga">Harga</label>
+        <input type="text" name="harga"s>
       </div>
       <div class="">
-        <label for="nama">Logo</label>
-        <input type="text" name="logo" value="<?php echo $_SESSION['logo'] ?>">
+        <label for="foto">Foto</label>
+        <input type="text" name="foto">
       </div>
       <div class="">
-        <label for="alamat">Alamat</label>
-        <input type="text" name="alamat" value="<?php echo $_SESSION['alamat'] ?>">
+        <label for="keterangan">Keterangan</label>
+        <input type="text" name="keterangan" value="<?php echo $barang['keterangan'] ?>">
       </div>
       <div class="">
-        <label for="no_telfon">No. Telp</label>
-        <input type="text" name="no_telefon" value="<?php echo $_SESSION['no_telefon'] ?>">
-      </div>
-      <div class="">
-        <label for="latitude">Latitude</label>
-        <input type="text" name="latitude" value="<?php echo $_SESSION['latitude'] ?>">
-      </div>
-      <div class="">
-        <label for="nama">Longitude</label>
-        <input type="text" name="longitude" value="<?php echo $_SESSION['longitude'] ?>">
-      </div>
-      <div class="">
-        <input type="submit" name="update_profile" value="Update">
+        <input type="submit" name="update_barang" value="Update">
       </div>
     </form>
   </body>

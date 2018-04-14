@@ -28,6 +28,11 @@ class barang{
       return $this->get_data($query, '');
   }
 
+  function select($id){
+      $query = "SELECT * FROM barang WHERE id=".$id;
+      return $this->get_data($query, '');
+  }
+
   function get_data($query, $param){
       try{
         global $pdo;
