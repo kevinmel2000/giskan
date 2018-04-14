@@ -86,40 +86,40 @@
                     <li >
                         <a class="nav-link" href="index.php">
                             <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Inputkan Toko</p>
+                            <p>Home</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li>
                         <a class="nav-link" href="./lokasi.php">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>Data Toko</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./admin.php">
+                        <a class="nav-link" href="./input.php">
                             <i class="nc-icon nc-notes"></i>
                             <p>Input Lokasi</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./typography.html">
+                        <a class="nav-link" href="./view/user/edit.php">
                             <i class="nc-icon nc-paper-2"></i>
-                            <p>Typography</p>
+                            <p>Edit Data</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./icons.html">
+                        <a class="nav-link" href="./view/user/home.php">
                             <i class="nc-icon nc-atom"></i>
-                            <p>Icons</p>
+                            <p>User</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./maps.html">
+                        <a class="nav-link" href="./barang.php">
                             <i class="nc-icon nc-pin-3"></i>
-                            <p>Maps</p>
+                            <p>Data Barang</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item active">
                         <a class="nav-link" href="./notifications.html">
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Notifications</p>
@@ -299,21 +299,7 @@
             </footer>
         </div>
     </div>
-    <div class="">
-      <table>
-        <?php
-        if($data['rows']>0){
-          foreach ($data['data'] as $value) {
-            echo "<tr>";
-            for ($i=2; $i < 6 ; $i++) {
-              echo "<td>$value[$i]</td>";
-            }
-            echo "<td><a href='detail.php?id=$value[0]'>Lihat</a></td></tr>";
-          }
-        }
-        ?>
-      </table>
-    </div>
+
 </div>
  -->
 </body>
