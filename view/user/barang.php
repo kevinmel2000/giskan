@@ -37,7 +37,7 @@
 
           <div class="col-sm-4">
             <div class="panel-body">
-              <form method="post">
+              <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-2">
@@ -66,7 +66,7 @@
                         <label for="nama">Foto</label>
                     </div>
                     <div class="col-sm-4">
-                          <input type="text" name="foto" value="">
+                          <input type="file" name="foto" value="">
                     </div>
                   </div>
 

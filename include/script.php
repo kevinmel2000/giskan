@@ -83,39 +83,39 @@
 	// 		}
 	// 	}
   //
-	// 	function get_image($file_name,$dir){
-	// 		if (is_dir($dir)){
-	// 		  if ($dh = opendir($dir)){
-	// 		    while (($file = readdir($dh)) !== false){
-	// 		      	if (strpos($file,$file_name) !== false) {
-	// 				    return $file;
-	// 				}
-	// 		    }
-	// 		    closedir($dh);
-	// 		  }
-	// 		}else{
-	// 			echo 'dir not found';
-	// 		}
-	// 	}
-  //
-	// 	function compress($source, $destination, $quality) {
-  //
-	// 	    $info = getimagesize($source);
-  //
-	// 	    if ($info['mime'] == 'image/jpg'){
-	// 	        $image = imagecreatefromjpg($source);
-	// 	    }
-	// 	    elseif ($info['mime'] == 'image/png'){
-	// 	    	$image = imagecreatefrompng($source);
-	// 	    }
-	// 	    elseif ($info['mime'] == 'image/jpeg'){
-	// 	    	$image = imagecreatefromjpeg($source);
-	// 	    }
-  //
-	// 	    imagejpeg($image, $destination, $quality);
-  //
-	// 	    return $destination;
-	// }
+		function get_image($file_name,$dir){
+			if (is_dir($dir)){
+			  if ($dh = opendir($dir)){
+			    while (($file = readdir($dh)) !== false){
+			      	if (strpos($file,$file_name) !== false) {
+					    return $file;
+					}
+			    }
+			    closedir($dh);
+			  }
+			}else{
+				echo 'dir not found';
+			}
+		}
+
+		function compress($source, $destination, $quality) {
+
+		    $info = getimagesize($source);
+
+		    if ($info['mime'] == 'image/jpg'){
+		        $image = imagecreatefromjpg($source);
+		    }
+		    elseif ($info['mime'] == 'image/png'){
+		    	$image = imagecreatefrompng($source);
+		    }
+		    elseif ($info['mime'] == 'image/jpeg'){
+		    	$image = imagecreatefromjpeg($source);
+		    }
+
+		    imagejpeg($image, $destination, $quality);
+
+		    return $destination;
+	}
 
 	}
 

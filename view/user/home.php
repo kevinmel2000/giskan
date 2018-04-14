@@ -209,6 +209,9 @@
                                    <?php echo $_SESSION['nama']; ?>
                               </div>
                               <div class="panel-body">
+                                  <img src="logo/<?php echo $_SESSION['logo']?>" height="200" width="200">
+                              </div>
+                              <div class="panel-body">
                                   <?php echo $_SESSION['email']; ?>
                                   <div>
                                     <a href="edit.php">Edit</a>

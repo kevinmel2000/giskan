@@ -237,7 +237,7 @@
                                      for ($i=2; $i < 6; $i++) {
                                        echo "<div style='background-color:#97cc43;'>".$value[$i]."</div>";
                                      }
-                                     echo "<div style='background-color:#89c12e;' ><a href='lihat.php?id=$value[0]'>Lihat</a></div>";
+                                     echo "<div style='background-color:#89c12e;' ><a href='detail.php?id=$value[0]'>Lihat</a></div>";
                                      echo "</div>";
                                    }
                                  }

@@ -37,10 +37,8 @@ class user
         );
       $get = $this->get_data($query, $param);
       if($get['rows']>0){
-        print_r($get['data']['0']);
         $this->setSession($get['data'][0]);
         echo "<br>";
-        print_r($_SESSION);
 
         $script = new function_script();
         $script->redirect('view/user/home');
@@ -83,38 +81,6 @@ class user
       }
   }
 
-  function update($data){
-    global $pdo;
-    try{
-      $query = $pdo->prepare("
-        UPDATE `user` SET
-          `nama`=?,
-          `email`=?,
-          `logo`=?,
-          `alamat`=?,
-          `no_telefon`=?,
-          `latitude`=?,
-          `longitude`=?
-        WHERE `id`= ?"
-      );
-      $query->execute(array(
-          $data['nama'],
-          $data['email'],
-          $data['logo'],
-          $data['alamat'],
-          $data['no_telefon'],
-          $data['latitude'],
-          $data['longitude'],
-          $_SESSION['id']
-        ));
-        $this->setSession($data);
-      $script = new function_script();
-      $script->redirect('home');
-    }catch(PDOException $e){
-      echo "Update Gagal";
-    }
-  }
-
   function check(){
     if(!isset($_SESSION['id'])){
       header('location: ../../');
@@ -129,6 +95,85 @@ class user
    function getById($id){
      $query = "SELECT * FROM user WHERE id=".$id;
      return $this->get_data($query, '');
+   }
+
+   function logo(){
+       $script = new function_script();
+
+       $ekstensi_diperbolehkan	= array('png','jpg','jpeg');
+       $nama = $_FILES['logo']['name'];
+       $x = explode('.', $nama);
+       $ekstensi = strtolower(end($x));
+       $ukuran	= $_FILES['logo']['size'];
+       $file_tmp = $_FILES['logo']['tmp_name'];
+
+       $new_name = $_SESSION['id']."_".$_SESSION['nama'];
+
+       $cek = $script->get_image($new_name,'logo/');
+
+       if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
+         if($ukuran < 1044070){
+           if($cek!=null){
+             copy($file_tmp, 'logo/'.$cek);
+             $script->compress(
+             'logo/'.$cek,
+             'logo/'.$cek,
+             75
+             );
+             return $cek;
+           }else{
+             move_uploaded_file($file_tmp, 'logo/'.$new_name.".".$ekstensi);
+             $script->compress(
+             'logo/'.$new_name.".".$ekstensi,
+             'logo/'.$new_name.".".$ekstensi,
+             75
+             );
+             return $new_name.".".$ekstensi;
+           }
+         }
+
+       }else{
+         return NULL;
+       }
+   }
+
+
+   function update($data){
+     $file = $this->logo();
+     if($file!=null){
+     $data['logo'] = $file;
+   }else{
+     $data['logo'] = null;
+   }
+     global $pdo;
+     try{
+       $query = $pdo->prepare("
+         UPDATE `user` SET
+           `nama`=?,
+           `email`=?,
+           `logo`=?,
+           `alamat`=?,
+           `no_telefon`=?,
+           `latitude`=?,
+           `longitude`=?
+         WHERE `id`= ?"
+       );
+       $query->execute(array(
+           $data['nama'],
+           $data['email'],
+           $data['logo'],
+           $data['alamat'],
+           $data['no_telefon'],
+           $data['latitude'],
+           $data['longitude'],
+           $_SESSION['id']
+         ));
+         $this->setSession($data);
+       $script = new function_script();
+       $script->redirect('home');
+     }catch(PDOException $e){
+       echo "Update Gagal: ".$e->getMessage();
+     }
    }
 
  }

@@ -172,7 +172,7 @@
                                   <button class="btn btn-info" onclick="manualLokasi()"> Manual </button>
 
 
-                                     <form method="post">
+                                     <form method="post" enctype="multipart/form-data">
                                        <div class="">
                                          <label for="nama">Nama</label>
                                          <input type="text" name="nama" value="<?php echo $_SESSION['nama'] ?>">
@@ -183,7 +183,7 @@
                                        </div>
                                        <div class="">
                                          <label for="nama">Logo</label>
-                                         <input type="text" name="logo" value="<?php echo $_SESSION['logo'] ?>">
+                                         <input type="file" name="logo" value="<?php echo $_SESSION['logo'] ?>">
                                        </div>
                                        <div class="">
                                          <label for="alamat">Alamat</label>

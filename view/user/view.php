@@ -31,7 +31,7 @@
       </tr>
       <tr>
         <td>Foto</td>
-        <td><?php echo $data['foto'];?></td>
+        <td><img src="foto/<?php echo $data['foto'];?>" alt=""  height="200" width="200"></td>
       </tr>
       <tr>
         <td>Keterangan</td>
@@ -56,7 +56,7 @@
           <td>".$t['no_telefon']."</td>
           </tr>";
         }
-      }      
+      }
       ?>
     </table>
   </body>
