@@ -469,12 +469,15 @@ console.log(argeojson);
 
 
   j=0;
+  var marker=[];
   while(j<length)
   {
     if(argeojson[j]['latitude']!="" && argeojson[j]['longitude']!="")
     {
+
       console.log(argeojson[j]['latitude']);
-      var marker = L.marker([argeojson[j]['latitude'], argeojson[j]['longitude']]).addTo(mymap);
+      marker[j] = L.marker([argeojson[j]['latitude'], argeojson[j]['longitude']]).addTo(mymap);
+      marker[j].bindPopup("<a href=barang.php?user="+argeojson[j]['id']+">Menuju Toko</a>").openPopup();
 
     }
       j++;
