@@ -48,7 +48,7 @@ include 'proses/getdata.php';
 
   </div>
     <div class="wrapper">
-        <div class="sidebar" data-image="assets/img/sidebar-5.jpg">
+        <div class="sidebar" data-color=green data-image="assets/img/sidebar-5.jpg">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -64,13 +64,13 @@ include 'proses/getdata.php';
                     <li >
                         <a class="nav-link" href="index.php">
                             <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Laporkan Sampah</p>
+                            <p>Inputkan Toko</p>
                         </a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="./lokasi.php">
                             <i class="nc-icon nc-circle-09"></i>
-                            <p>Data Lokasi Sampah</p>
+                            <p>Data Toko</p>
                         </a>
                     </li>
                     <li>
@@ -197,7 +197,7 @@ include 'proses/getdata.php';
                                   <button class="btn btn-info" onclick="gpsLokasi()"> GPS </button>
                                   <button class="btn btn-info" onclick="manualLokasi()"> Manual </button>
 
-                                  <button style="margin-top:30px;" class="btn btn-sucess" onclick="lokasiSampah()"> Lokasi Sampah </button>
+                                  <button style="margin-top:30px;" class="btn btn-sucess" onclick="lokasiSampah()"> Lokasi Toko </button>
                                   <select id ="lokasiData"style="margin-top:30px;" class="form-control" name="" onchange="fungsitest()">
 
                                     <?php
@@ -218,7 +218,7 @@ include 'proses/getdata.php';
 
                                   <button style=" margin-top:30px;" class="btn btn-sucess" onclick="removeRute()"> Remove Rute </button>
 
-                                
+
 
 
 
@@ -441,7 +441,7 @@ var argeojson = <?php echo json_encode($data) ?>;
 function manualLokasi()
 {
   var tanda;
-  swal("Pilih Posisi Sampah tersebut");
+  swal("Pilih Posisi Toko");
   mymap.on('click', function(e) {
           newMarker = new L.marker(e.latlng).addTo(mymap);
           latitude=e.latlng.lat;

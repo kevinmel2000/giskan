@@ -66,9 +66,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./input.php">
+                        <a class="nav-link" href="./admin.php">
                             <i class="nc-icon nc-notes"></i>
-                            <p>Input Lokasi</p>
+                            <p>Admin Verifikasi</p>
                         </a>
                     </li>
                     <li>
@@ -95,12 +95,7 @@
                             <p>Notifications</p>
                         </a>
                     </li>
-                    <li class="nav-item active active-pro">
-                        <a class="nav-link active" href="upgrade.html">
-                            <i class="nc-icon nc-alien-33"></i>
-                            <p>Gis Untuk Nelayan</p>
-                        </a>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -153,15 +148,47 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-3">
+                            <div class="card ">
+                                <div class="card-header ">
+                                    <h4 class="card-title">Map Menu</h4>
+                                    <p style="color:red;"onclick="remove()" class="card-category"><b>UNDO</b></p>
+                                </div>
+
+
+
+                                <div class="card-body ">
+                                  <!-- Menu Peta -->
+                                  <button class="btn btn-info" onclick="gpsLokasi()"> GPS </button>
+                                  <button class="btn btn-info" onclick="manualLokasi()"> Manual </button>
+
+                                     <form enctype="multipart/form-data" class="" action="upload/upload.php" method="POST">
+                                     <label for="lat">latitude :</label> <br/>
+                                     <input type="text" id="lat" name="lat" readonly>
+                                     <label for="lon">Longitude :</label>
+                                     <input type="text" id="lon" name="lon" readonly>
+
+                                     <input type="file" style="margin-top:10px;" name="fileupload" id="fileupload">
+                                     <input type="submit" style="margin-top:40px;" class="btn btn-sucess" value="inputkan" name="button">
+                                     </form>
+
+
+                                </div>
+                                <div class="card-footer ">
+                                    <div class="legend">
+
+                                    </div>
+                                    <hr>
+                                    <div class="stats">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-9">
                           <!-- Div Peta -->
-                           <div id="map" style="height:600px;">
-
-                             <?php
-
-                             include 'plugin_weather/example/index.php';
-
-                              ?>
+                           <div id="mapid">
 
                            </div>
                         </div>
@@ -317,14 +344,67 @@
 
 
 
-// var mymap = L.map('mapid').setView([-0.9154789999999999, 100.46043549999999], 13);
-// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-//     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-//     maxZoom: 18,
-//     id: 'mapbox.streets',
-//     accessToken: 'pk.eyJ1IjoiYXh2ZXI3IiwiYSI6ImNqZjZ0NXk2NjA4NzI0MG44djVyOXU2cXAifQ.N-pJV3Uw0nOhjvLz9E4Zuw'
-// }).addTo(mymap);
+var mymap = L.map('mapid').setView([-0.9154789999999999, 100.46043549999999], 13);
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiYXh2ZXI3IiwiYSI6ImNqZjZ0NXk2NjA4NzI0MG44djVyOXU2cXAifQ.N-pJV3Uw0nOhjvLz9E4Zuw'
+}).addTo(mymap);
 
+
+
+
+
+
+
+function gpsLokasi()
+{
+  // alert("Test");
+  navigator.geolocation.getCurrentPosition(function(location) {
+    var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
+    var inputLat = document.getElementById('lat');
+    lat.value=location.coords.latitude;
+    var inputLon = document.getElementById('lon');
+    lon.value=location.coords.longitude;
+    mymap.setView(latlng, 15);
+    newMarker = new L.marker(latlng).addTo(mymap);
+  });
+
+
+
+}
+
+function remove(i)
+{
+  // mymap.removeLayer(newMarker);
+    map.removeLayer(newMarker);
+}
+
+function disabled()
+{
+  document.getElementById("lat").disabled = true;
+  document.getElementById("lon").disabled = true;
+}
+
+
+function manualLokasi()
+{ var latitude;
+  var longitude;
+  var tanda;
+  swal("Pilih Posisi Sampah tersebut");
+  mymap.on('click', function(e) {
+          newMarker = new L.marker(e.latlng).addTo(mymap);
+          latitude=e.latlng.lat;
+          longitude=e.latlng.lng;
+          // Menampilkan lat dan lon pada input text
+          var inputLat = document.getElementById('lat');
+          lat.value=latitude;
+          var inputLon = document.getElementById('lon');
+          lon.value=longitude;
+  });
+
+}
 
 
 
