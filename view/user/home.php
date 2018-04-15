@@ -103,22 +103,25 @@
 
                     <div class="row">
                         <div class="col-sm-3">
-                            <div class="panel panel-info">
+                            <div class="panel panel-info" style="font-size:16px">
                               <div class="panel-head">
-                                   <?php echo $_SESSION['nama']; ?>
+                                   <h2><center><?php echo $_SESSION['nama']; ?></center></h2>
                               </div>
                               <div class="panel-body">
                                   <img src="logo/<?php echo $_SESSION['logo']?>" height="200" width="200">
                               </div>
                               <div class="panel-body">
+                                  <div class="">
                                   <?php echo $_SESSION['email']; ?>
-                                  <div>
-                                    <a href="edit.php">Edit</a>
+                                  </div>
+                                  <div class="">
+                                  <?php echo $_SESSION['alamat']; ?>
+                                  </div>
+                                  <div class="">
+                                  <?php echo $_SESSION['no_telefon']; ?>
                                   </div>
                                   <div>
-                                    <form class="" method="post">
-                                      <input type="submit" name="logout" value="Logout">
-                                    </form>
+                                    <a href="edit.php">Edit</a>
                                   </div>
                                   <div>
                                     <a href="barang.php">Barang</a>
@@ -129,9 +132,8 @@
                         <div class="col-sm-9">
                           <table style="font-size:17px;">
 
-                              <th width="300px">Nama</th>
+                              <th width="300px">Nama Barang</th>
                               <th width="300px">Harga</th>
-                              <th width="300px">Keterangan</th>
                               <th width="300px">Aksi</th>
 
                             <?php
@@ -140,8 +142,7 @@
                                   echo "
                                   <tr>
                                   <td>".$dat['nama']."</td>
-                                  <td>".$dat['harga']."</td>
-                                  <td>".$dat['keterangan']."</td>
+                                  <td>Rp.".$dat['harga'].",00</td>
                                   <td><a href='view.php?id=".$dat['id']."'>Lihat</a></td>
                                   </tr>";
                                 }

@@ -130,20 +130,24 @@
                                  </div>
                                </form>
                              </div>
-                             <div class="">
-
+                             <div class="" style="font-size:24px">
+                               <table  style='background-color:#89c12e;'>
                                  <?php
                                  if($data['rows']>0){
                                    foreach ($data['data'] as $value) {
-                                     echo "<div>";
-                                     for ($i=2; $i < 6; $i++) {
-                                       echo "<div style='background-color:#97cc43;'>".$value[$i]."</div>";
-                                     }
-                                     echo "<div style='background-color:#89c12e;' ><a href='detail.php?id=$value[0]'>Lihat</a></div>";
-                                     echo "</div>";
+                                     echo "<tr>";
+                                     echo "<td>";
+                                     echo "<div style='background-color:#97cc43;'><h1>".$value['nama']."</h1></div>";
+                                     echo "<div style='background-color:#97cc43;'>Rp.".$value['harga'].",00</div>";
+                                     echo "<div style='background-color:#89c12e;' ><a href='detail.php?id=".$value['id']."'>Lihat</a></div>";
+                                     echo "</td><td>";
+                                     echo "<img style='float:right' src='view/user/foto/".$value['foto']."' height:'300px' width='300px'>";
+                                     echo "</td>";
+                                     echo "</tr>";
                                    }
                                  }
-                                 ?>
+                                ?>
+                               </table>
 
                              </div>
 
@@ -160,7 +164,7 @@
                     </div>
                 </div>
             </div>
-            <footer class="footer">
+            <!-- <footer class="footer">
                 <div class="container">
                     <nav>
                         <ul class="footer-menu">
@@ -194,12 +198,11 @@
                         </p>
                     </nav>
                 </div>
-            </footer>
+            </footer> -->
         </div>
     </div>
 
 </div>
- -->
 </body>
 <!--   Core JS Files   -->
 <script src="assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
