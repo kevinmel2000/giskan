@@ -61,6 +61,7 @@
 
     }
   </style>
+  <title>GisKan GIS Untuk Nelayan</title>
 </head>
 
 <body>

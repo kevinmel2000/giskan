@@ -17,7 +17,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>GisKan GIS Untuk Nelayan</title>
   </head>
   <body>
     <table>

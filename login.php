@@ -6,6 +6,7 @@
 
 <!doctype html>
 <head>
+  <title>GisKan GIS Untuk Nelayan</title>
 
 
   <!-- Latest compiled and minified CSS -->
