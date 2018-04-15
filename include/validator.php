@@ -43,7 +43,7 @@
 			if(isset($_GET['user'])){
 					header('Location: ?user='.$_GET['user'].'&nama='.$_POST['nama']);
 			}else{
-					header('Location: ?nama="'.$_POST['nama'].'"');
+					header('Location: ?nama='.$_POST['nama']);
 			}
 
 	}
