@@ -13,7 +13,7 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Kuaci Clan
+                    Giskan
                 </a>
             </div>
             <ul class="nav">
